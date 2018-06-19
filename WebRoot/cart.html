@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <title>商品简介</title>
+    <style>
+    #head-left{float: left;
+    }
+    #head-right a:link {
+				text-decoration: none;
+				color:#000000;}
+	#head-right a:visited {
+				text-decoration: none;
+				color:#000000;}
+	#head-right a:hover {
+				text-decoration: none;
+				color:#BDB98C;}
+	#head-right a:active {
+				text-decoration: none;
+				color:#000000;}
+    #head-right {display:inline;
+			   word-spacing:5px;
+			   float:right;
+			   color:#000000;
+			   text-decoration:none;}  
+
+  	#body{
+  			clear:left;
+  	   		word-spacing:50px;
+  			 margin-top: 20px;}
+  	#body a{text-decoration:none;
+  			}
+  	 #foot{
+			width:100%;
+			position:fixed; 
+			background-color:#efeedc;
+			margin-top:15px;
+			bottom:0; left:0;
+			width:100%; height:80px;
+		}
+    </style>
+  </head>
+  
+  <body>
+  <div>
+		<div  id="head-left">
+	
+					<img src="img/zhku.png" style="height: 70px;"/>
+		</div>
+		<div id="head-right">		
+					<img src="img/cart.gif" />
+					<a href="personal.html"  >个人中心</a>|
+					<a href="register.jsp"  >用户注册</a>|
+					<a href="login.jsp" >用户登录</a>|
+					<a href="bookstore.html"  >返回首页</a>		
+			
+		</div>
+		<div >	
+			<table bgcolor="#B6B684"style="width: 100%;height: 20px;">
+			<tr></tr>
+			</table>
+		</div>
+		<div id="body">
+				<h4 align="center">订单详情</h4>
+				<table align="center" width="40%">
+					<tr><td width="20%"><input type="button" value="待付款:" name="waitpay"></td>
+						<td name="b-waitpay"  width="80%">无</td><td ><input type="button" value="点击支付"  name="b-waitpay"></td>
+					</tr>
+					<tr></tr><tr></tr>
+					<tr><td><input type="button" name="waitsend" value="待发货:"></td>
+						<td name="b-waitsend">无</td><td ><input type="button" value="提醒发货"  name="remind"></td>
+					</tr>
+					<tr></tr><tr></tr>
+					<tr><td><input type="button" name="delivered" value="已发货:"></a></td>
+						<td name="b-delivered">无</td>
+					</tr>
+					<tr></tr><tr></tr>
+					<tr><td><input type="button" name="signin" value="已签收:"></a></td>
+						<td name="b-signin">无</td><td ><input type="button" value="去评价"  name="apprise"></td>
+					</tr>
+				</table>
+		</div>
+		<div>
+				
+		</div>
+	
+		<div id="foot">
+			<table bgcolor="#efeedc" width="100%" align="center">
+			<tr>
+				<td rowspan="2" style="width:10%">
+			<img src="img/zhku.png" width="195" height="50" style="margin-left:100px;">
+				</td>
+				<td style="padding-left:50px;padding-top:5px;">
+					<a><font color="#747556">&copy;ZHKUBookStore </font></a>
+				</td>
+			</tr>
+			<tr>
+				<td style="padding-left:50px;">
+				<font color="#747556">
+		JOIN US PLEASE CALL 0000-1234567
+				</font>
+				</td>
+			</tr>
+		</table>
+		</div>	
+		
+		</div>
+
+  </body>
+</html>
