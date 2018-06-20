@@ -3,8 +3,23 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link rel="shortcut" href="img/zhku.gif">
 		<title>仲有书网上商城</title>
 		<style type="text/css">
+		#head a{align：right;}
+		#head-left{width: 100%;}
+		#ul{
+			float:right;
+			position: relative;}
+	    #head ul{
+	    	list-style: none;
+	    	float:right;}
+	    #ul img{position: absolute;
+	    	top: 12px;left:10px;}
+	    #head li{float:left;
+	    	height: 80px;
+	    	margin-right:20px;
+	    	text-align: center;}
 		#head a:link {
 				text-decoration: none;
 				color:#000000;}
@@ -18,7 +33,7 @@
 				text-decoration: none;
 				color:#000000;}
 				
-		#menu{font-size:14px;
+		#menu a{font-size:14px;
 			 color:#ffffff; 
 			 font-weight:bold; 
 			 text-align: center;
@@ -52,10 +67,10 @@
 			border: 10px;
 		}
 		#foot{
+			
 			width:100%;
 			background-color:#efeedc;
 			margin-top:15px;
-			position:fixed; 
 			bottom:0; left:0;
 			width:100%; height:80px;
 		}
@@ -63,20 +78,17 @@
 	</head>
 	<body>
 		<div  id="head">
-		<table width="100%">
-			<tr ><td width="70%">
-					<img src="img/zhku.png" style="height: 70px;"/>
-				</td>
-				<td>
-					<img src="img/cart.gif" />
-					<a href="denglu.html" name="cart">查看购物车</a>|
-					<a href="zhuce.html" target="_blank" name="register">用户注册</a>|
-					<a href="denglu.html" target="_blank" name="login">用户登录</a>		
-				</td>
-			</tr>
-		</table>
+				<a href="index.jsp"><img src="img/zhku.png" style="height: 70px;"/></a>	
+				<div id="ul">
+					<img src="img/cart.gif">
+					<ul>
+					<li><a href="cart.html" name="cart">购物车</a></li>
+					<li><a href="register.jsp">注册</a></li>
+					<li><a href="login.jsp">登录</a></li>
+				
+					</ul>
 		</div>
-		
+		</div>
 		
 		<div>
 		<table width="100%">
@@ -95,16 +107,12 @@
 						<a href="" name="up">价格升序</a>
 						<a href="" name="down">价格降序</a>
 					</td>
-					<td align="center" width="80%">
-						<a href="brief.html" name="Chin">语文类</a>&nbsp;&nbsp;
-						<a href="brief.html" name="math">数学类</a>&nbsp;&nbsp;
-						<a href="brief.html" name="engl">英语类</a>&nbsp;&nbsp;
-						<a href="brief.html" name="chem">化学类</a>&nbsp;&nbsp;
-						<a href="brief.html" name="phyl">物理类</a>&nbsp;&nbsp;
-						<a href="brief.html" name="bio">生物类</a>&nbsp;&nbsp;
-						<a href="brief.html" name="his">历史类</a>&nbsp;&nbsp;
-						<a href="brief.html" name="pol">政治类</a>&nbsp;&nbsp;
-						<a href="brief.html" name="geo">地理类</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<td align="center" width="55%">
+						<a href="" name="Chin">语文类</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="" name="math">数学类</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="" name="engl">英语类</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</td>
+					<td>
 						输入书名
 						<input type="text" size="20" name="serach_name">
 						<input type="button" value="搜索" name="serach">
@@ -112,25 +120,23 @@
 				</tr>				
 			</table>	
 		</div>
-	<div id="content">
-		
+		<div id="content">
 			<table width="100%">
 					<tr align="center">
 						<% 
 						book a=new book();
 						for(int i=1;i<=a.booknum();i++) {
-							if((i-1)%4==0)%><table><% 
-						%>
+							if((i-1)%4==0)%>
+			<table><% %>
 						<td>
-							<a href="test.html"><img src="<%= a.getbookpic(i)%>" height="197" width="130" alt="图片1" usemap="#map1">
+							<a href="brief.html"><img src="<%= a.getbookpic(i)%>" height="197" width="130" alt="图片1" usemap="#map1">
 							<td>价格20￥</td></a>
 						 	
 						</td><% }%>
 						
 			</table>
-			<br /><br /><br />
-		
-	</div>
+			<br/><br /><br />	
+		</div>
 		<div id="foot">
 		<table bgcolor="#efeedc" width="100%" align="center">
 			<tr>

@@ -4,32 +4,51 @@
   <meta charset="UTF-8">
     <title>商品简介</title>
     <style>
-    #head-left{float: left;
-    }
-    #head-right a:link {
+  #head-left{width: 100%;}
+	#ul{
+		float:right;
+		position: relative;}
+    #head-left ul{
+    			list-style: none;
+    			float:right;}
+    #ul img{position: absolute;
+    		top: 12px;left:10px;}
+    #head-left li{float:left;
+    			height: 80px;
+    			margin-right:20px;
+    			text-align: center;}
+    #head-left a:link {
 				text-decoration: none;
 				color:#000000;}
-	#head-right a:visited {
+	#head-left a:visited {
 				text-decoration: none;
 				color:#000000;}
-	#head-right a:hover {
+	#head-left a:hover {
 				text-decoration: none;
 				color:#BDB98C;}
-	#head-right a:active {
+	#head-left a:active {
 				text-decoration: none;
 				color:#000000;}
-    #head-right {display:inline;
+	#head-left{display:inline;
 			   word-spacing:5px;
 			   float:right;
 			   color:#000000;
 			   text-decoration:none;}  
-
-  	#body{
+	#brow{background-color: #B6B684;
+			height: 20px;
+		
+			}
+  	#body{	
   			clear:left;
   	   		word-spacing:50px;
   			 margin-top: 20px;}
+	#body table{border-style: dotted;
+				border-color: #B6B684;}
   	#body a{text-decoration:none;
   			}
+  	#body th{width:30%;
+  			text-align: center;
+  	}
   	 #foot{
 			width:100%;
 			position:fixed; 
@@ -41,54 +60,54 @@
     </style>
   </head>
   
-  <body>
-  <div>
-		<div  id="head-left">
-	
-					<img src="img/zhku.png" style="height: 70px;"/>
-		</div>
-		<div id="head-right">		
-					<img src="img/cart.gif" />
-					<a href="cart.html"  >购物车</a>|
-					<a href="register.jsp"  >用户注册</a>|
-					<a href="login.jsp" >用户登录</a>|
-					<a href="bookstore.html"  >返回首页</a>		
-			
-		</div>
-		<div >	
-			<table bgcolor="#B6B684"style="width: 100%;height: 20px;">
-			<tr></tr>
-			</table>
-		</div>
-		<div id="body">
-				<h4 align="center">个人中心</h4>
-				<table align="center" width="40%">
-					<tr><td width="20%"><input type="button" value="我的余额:" name="remainmoney"></td>
-						<td name="money"  width="80%"></td>
-					</tr>
-					<tr></tr><tr></tr>
-					<tr><td><input type="button" name="recharge" value="充值余额:"></td></td>
-						<td><input type="submit" value="充值" name="submit"></td>
-					</tr>
-					<tr></tr><tr></tr>
-					<tr><td><input type="button" name="myaddress" value="我的地址:"></a></td>
-						<td name="address">广东省广州市海珠区仲恺农业工程学院</td>
-					</tr>
-					<tr></tr><tr></tr>
-					<tr><td><input type="button" name="mypassword" value="我的密码:"></a></td>
-						<td name="password"></td>	
-					</tr>
-					<tr></tr><tr></tr>
-					<tr><td><input type="button" name="changepassword" value="修改密码:"></a></td>
-						<td name="chpassword"></td>	
-					</tr>
-				</table>
-		</div>
-		<div>
+<body>
+<div  id="head-left">
+				<a href="index.jsp"><img src="img/zhku.png" style="height: 70px;"/></a>	
+				<div id="ul">
+					<img src="img/cart.gif">
+					<ul>
+					<li><a href="cart.html" name="cart">购物车</a></li>
+					<li><a href="order.html">订单详情</a></li>
+					
+					<li><a href="index.jsp" >返回首页</a></li>
+					</ul>
+				</div>
+					<div id="brow">	
+					<br>
+					</div>	
+</div>
+
+<div id="body">
 				
-		</div>
+				<table align="center" width="30%">
+				<tr><td></td><td><h4 align="left">个人中心</h4></td><td><a  href="personalchange.html">
+					<input type="submit" value="修改信息" style="width: 70px;"align="left" style="width: 70px; "></a></td></tr>
+				<tr><th >姓名:</th><td>qqanna</td></tr>
+				<tr></tr><tr></tr>
+				<tr><th >账号:</th><td>100</td></tr>
+				<tr></tr><tr></tr>
+				<tr><th >密码:</th><td>123456</td></tr>
+				<tr></tr><tr></tr>
+				<tr><th >邮箱:</th><td>100</td></tr>
+				<tr></tr><tr></tr>
+				<tr><th >地址:</th><td>广州仲恺农业工程学院</td></tr>
+				<tr></tr><tr></tr>
+				<tr><th >手机号:</th><td>13533800829</td></tr>
+				<tr></tr><tr></tr><tr></tr>
+				<tr><th >余额:</th><td>100 </td><td><input type="button" value="点击充值" align="left" style="width: 70px; "></td></tr>
+					<tr></tr><tr></tr>	
+				<tr><th >充值数额:</th><td><input type="text" name="recharge" style="width: 42px; "></td>
+					<td><input type="button" name="moneyrechage" value="充值" align="left" style="width: 70px; "></td></tr>
+				<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+				<tr><td align="right"> </td>
+				<td align="center"></td></tr>
+				
+				<tr></tr><tr></tr><tr></tr>
+				<tr></tr><tr></tr><tr></tr>
+				</table>
+</div>
 	
-		<div id="foot">
+<div id="foot">
 			<table bgcolor="#efeedc" width="100%" align="center">
 			<tr>
 				<td rowspan="2" style="width:10%">
@@ -106,9 +125,8 @@
 				</td>
 			</tr>
 		</table>
-		</div>	
-		
-		</div>
+</div>	
+
 
   </body>
 </html>

@@ -4,32 +4,47 @@
   <meta charset="UTF-8">
     <title>商品简介</title>
     <style>
-	#head-left{float: left;
-    }
-    #head-right a:link {
+	#head-left{width: 100%;}
+	#ul{
+		float:right;
+		position: relative;}
+    #head-left ul{
+    			list-style: none;
+    			float:right;}
+    #ul img{position: absolute;
+    		top: 12px;left:10px;}
+    #head-left li{float:left;
+    			height: 80px;
+    			margin-right:20px;
+    			text-align: center;}
+    #head-left a:link {
 				text-decoration: none;
 				color:#000000;}
-	#head-right a:visited {
+	#head-left a:visited {
 				text-decoration: none;
 				color:#000000;}
-	#head-right a:hover {
+	#head-left a:hover {
 				text-decoration: none;
 				color:#BDB98C;}
-	#head-right a:active {
+	#head-left a:active {
 				text-decoration: none;
 				color:#000000;}
-	#head-right{display:inline;
+	#head-left{display:inline;
 			   word-spacing:5px;
 			   float:right;
 			   color:#000000;
 			   text-decoration:none;}  
+	#brow{background-color: #B6B684;
+			height: 20px;
+		
+			}
 	#block1{float:left;
-   			 margin-top: 25px;
+   			 margin-top: 60px;
    			 }
    
 	#block2{float: left; 
 		margin-left: 50px;
-		margin-top: 35px;}
+		margin-top: 70px;}
 	#block2 table{
 		border-color: #B6B684;
 		border-style: dotted;
@@ -38,7 +53,7 @@
    				height:50px;}
 	#block2 th{text-align: center;
 		} 
-	#block2 td{text-align: left;
+	#block2 td{text-align: center;
 		} 
 	#block3{float:right;
 			margin-left: 200px;
@@ -66,23 +81,24 @@
   </head>
   
   <body>
+
 		<div  id="head-left">
-	
-					<img src="img/zhku.png" style="height: 70px;"/>
+				<a href="index.jsp"><img src="img/zhku.png" style="height: 70px;"/></a>	
+				<div id="ul">
+					<img src="img/cart.gif">
+					<ul>
+					<li><a href="cart.html" name="cart">购物车</a></li>
+					<li><a href="register.jsp">注册</a></li>
+					<li><a href="login.jsp">登录</a></li>
+					<li><a href="index.jsp" >返回首页</a></li>
+					</ul>
+				</div>
+					<div id="brow">	
+					<br>
+					</div>	
 		</div>
-		<div id="head-right">		
-					<img src="img/cart.gif" />
-					<a href="cart.html"  >查看购物车</a>|
-					<a href="register.jsp"  >用户注册</a>|
-					<a href="login.jsp" >用户登录</a>|
-					<a href="bookstore.html"  >返回首页</a>		
-			
-		</div>
-		<div >	
-			<table bgcolor="#B6B684"style="width: 100%;height: 20px;">
-			
-			</table>
-		</div>
+		
+
 	
 		<div id="block1">
 		<img  src="img/z9.jpg" id="img">
@@ -90,12 +106,12 @@
 		<div id="block2">
 			<p ></p>	
 			<table >
-			
-			<tr ><th name="selectbook">书名：</th><td><input type="text" name="book" value="思想政治"></td></tr>		
+			<tr ><th name="selectbook">书名：</th><td><input type="text" name="book" value="思想政治"></td>
+			<td ><input type="button" name="upbookS" value="下架" style="width: 70px; " align="right" ></tr>		
 			<tr ><th name="selectversion">版本：</th><td ><input type="text" name="version" value="人教版"></td></tr>
 			<tr ><th name="prise">价格：</th><td ><input type="text" name="selectprise" value="20￥"></td></tr>				
 			<tr ><th name="selectbookbumber">购买数量：</th><td ><input type="text" name="booknumber" value="2"></td>
-				<td><input type="image" src="img/cart.gif"><input type="submit" name="buycart" value="加入购物车"></td>
+				<td><input type="image" src="img/cart.gif"><input type="submit" name="buycart" value="加入购物车" style="width: 90px; "></td>
 			</tr>
 			</table>
 		</div>

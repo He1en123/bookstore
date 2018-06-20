@@ -4,32 +4,48 @@
   <meta charset="UTF-8">
     <title>商品简介</title>
     <style>
-    #head-left{float: left;
-    }
-    #head-right a:link {
+   #head-left{width: 100%;}
+	#ul{
+		float:right;
+		position: relative;}
+    #head-left ul{
+    			list-style: none;
+    			float:right;}
+    #ul img{position: absolute;
+    		top: 12px;left:10px;}
+    #head-left li{float:left;
+    			height: 80px;
+    			margin-right:20px;
+    			text-align: center;}
+    #head-left a:link {
 				text-decoration: none;
 				color:#000000;}
-	#head-right a:visited {
+	#head-left a:visited {
 				text-decoration: none;
 				color:#000000;}
-	#head-right a:hover {
+	#head-left a:hover {
 				text-decoration: none;
 				color:#BDB98C;}
-	#head-right a:active {
+	#head-left a:active {
 				text-decoration: none;
 				color:#000000;}
-    #head-right {display:inline;
+	#head-left{display:inline;
 			   word-spacing:5px;
 			   float:right;
 			   color:#000000;
 			   text-decoration:none;}  
+	#brow{background-color: #B6B684;
+			height: 20px;}
+	#body table{	border-color: #B6B684;
+		border-style: dotted;
+	}
 
   	#body{
   			clear:left;
   	   		word-spacing:50px;
   			 margin-top: 20px;}
-  	#body a{text-decoration:none;
-  			}
+  	#body a{text-decoration:none;}
+  	
   	 #foot{
 			width:100%;
 			position:fixed; 
@@ -40,44 +56,39 @@
 		}
     </style>
   </head>
-  
   <body>
-  <div>
-		<div  id="head-left">
-	
-					<img src="img/zhku.png" style="height: 70px;"/>
-		</div>
-		<div id="head-right">		
-					<img src="img/cart.gif" />
-					<a href="personal.html"  >个人中心</a>|
-					<a href="register.jsp"  >用户注册</a>|
-					<a href="login.jsp" >用户登录</a>|
-					<a href="bookstore.html"  >返回首页</a>		
-			
-		</div>
-		<div >	
-			<table bgcolor="#B6B684"style="width: 100%;height: 20px;">
-			<tr></tr>
-			</table>
+<div  id="head-left">
+				<a href="index.jsp"><img src="img/zhku.png" style="height: 70px;"/></a>	
+				<div id="ul">
+					<img src="img/personal.gif" style="height: 20px; width: 20px; ">
+					<ul>
+					<li><a href="personal.html" name="cart">个人中心</a></li>
+					<li><a href="order.html">订单详情</a></li>
+					
+					<li><a href="index.jsp" >返回首页</a></li>
+					</ul>
+				</div>
+					<div id="brow">	
+					<br>
+					</div>	
 		</div>
 		<div id="body">
-				<h4 align="center">订单详情</h4>
+				
 				<table align="center" width="40%">
-					<tr><td width="20%"><input type="button" value="待付款:" name="waitpay"></td>
-						<td name="b-waitpay"  width="80%">无</td><td ><input type="button" value="点击支付"  name="b-waitpay"></td>
-					</tr>
-					<tr></tr><tr></tr>
-					<tr><td><input type="button" name="waitsend" value="待发货:"></td>
-						<td name="b-waitsend">无</td><td ><input type="button" value="提醒发货"  name="remind"></td>
-					</tr>
-					<tr></tr><tr></tr>
-					<tr><td><input type="button" name="delivered" value="已发货:"></a></td>
-						<td name="b-delivered">无</td>
-					</tr>
-					<tr></tr><tr></tr>
-					<tr><td><input type="button" name="signin" value="已签收:"></a></td>
-						<td name="b-signin">无</td><td ><input type="button" value="去评价"  name="apprise"></td>
-					</tr>
+					<tr><td colspan="4" align="center" ><h4 >购物车</h4></td></tr>
+					<tr><td width="20%"><h5>订单号</h5></td>
+						<td width="20%"><h5>商品名</h5></td>
+						<td width="20%"><h5>价格</h5></td>
+						<td width="50%"><h5>收获地址</h5></td>
+					<tr>
+					<tr><td width="20%">001</td>
+						<td width="20%">思想政治</td>
+						<td width="20%">20元</td>
+						<td width="50%">仲恺农业工程学院</td>
+						<td><input type="button" value="去支付"></td>
+					<tr>
+					<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+				
 				</table>
 		</div>
 		<div>
