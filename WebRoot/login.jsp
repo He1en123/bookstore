@@ -66,7 +66,7 @@
 					</div>	
 </div>
 <div>	<h2 align="center"> 用户登录</h2>
-		<form action="LoginServlet" method="post" name="form2" onSubmit="return check()">
+		<form action="/bookstore/Login" method="post" name="form2" onSubmit="return check()">
 			<table align="center" width="28%">
 			<tr><th width="30%">姓名</th><td><input type="text" name="ID"></td></tr>
 			<tr><th width="30%">密码</th><td><input type="password" name="password"></td></tr>

@@ -72,7 +72,7 @@
 		<tr><th width="30%">密码</th><td><input type="password" name="password"></td></tr>
 		<tr><th width="30%">确认密码</th><td><input type="password" name="password1"></td></tr>
 		<tr><th width="30%">手机号</th><td><input type="text" name="tel"></td></tr>	
-		<tr><th width="30%">邮箱</th><td><input type="text" name="email"></td></tr>
+		<tr><th width="30%">地址</th><td><input type="text" name="address"></td></tr>
 		<tr><th colspan="2" width="10%">
 			<input type="submit" value="注册">&nbsp;&nbsp;&nbsp;
 			<input type="reset" value="重置"></th></tr>           	
