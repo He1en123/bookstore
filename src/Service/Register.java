@@ -49,7 +49,7 @@ public class Register extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher("denglu.html").forward(request, response);
+		request.getRequestDispatcher("register.jsp").forward(request, response);
 	}
 
 	/**
