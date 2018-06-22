@@ -66,7 +66,11 @@
 					</div>	
 </div>
 <div>	<h2 align="center"> 用户登录</h2>
+<<<<<<< HEAD
 		<form action="bookstore/Login" method="post" name="form2" onSubmit="return check()">
+=======
+		<form action="/bookstore/Login" method="post" name="form2" onSubmit="return check()">
+>>>>>>> 8cc2bbcdf80afccea6fddcd9601a1a5abbe6ad47
 			<table align="center" width="28%">
 			<tr><th width="30%">姓名</th><td><input type="text" name="ID"></td></tr>
 			<tr><th width="30%">密码</th><td><input type="password" name="password"></td></tr>

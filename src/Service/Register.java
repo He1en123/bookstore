@@ -49,7 +49,11 @@ public class Register extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
 		request.getRequestDispatcher("register.jsp").forward(request, response);
+=======
+		request.getRequestDispatcher("/login.jsp").forward(request, response);
+>>>>>>> 8cc2bbcdf80afccea6fddcd9601a1a5abbe6ad47
 	}
 
 	/**
