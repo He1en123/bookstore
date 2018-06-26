@@ -15,6 +15,7 @@ public class order {
 	int tel;
 	String status;
 	public int getorderid() throws ClassNotFoundException, SQLException{ 
+		//查询当前有多少条订单，很有用的数字来的
 		DBCon a=new DBCon();
 		Statement stmt = a.getCon().createStatement();
 		String countid="select * from orderlist";
@@ -40,6 +41,7 @@ public class order {
 		stmt.close();
 	}
 	public ResultSet getorderbystatus(String status) throws ClassNotFoundException, SQLException{ 
+		//根据类型获得订单类型用，返回resultset类型
 		DBCon a=new DBCon();
 		String sql ="selecet * from order where status ='"+status+"'";
 		Statement stmt = a.getCon().createStatement();
@@ -52,22 +54,6 @@ public class order {
 	
 	
 	public void updateorderbyidandstatus(int orderid,String status)throws ClassNotFoundException, SQLException{
-		
-		DBCon a=new DBCon();
-		Statement stmt = a.getCon().createStatement();
-		if(status.equals("鏈粯娆�))
-			{String sql ="update orderlist set status='宸蹭粯娆� where orderid='"+orderid+"'";
-			stmt.executeUpdate(sql);
-			stmt.close();
-			}
-		else if(status.equals("宸蹭粯娆�))
-		{String sql ="update orderlist set status='宸插彂璐�'where orderid='"+orderid+"'";
-		stmt.executeUpdate(sql);
-		stmt.close();
-		}
-		else if(status.equals("宸插彂璐�))
-		{String sql ="update orderlist set status='宸茬鏀�'where orderid='"+orderid+"'";
-=======
 		//根据当前订单号和订单状态修改订单状态
 		DBCon a=new DBCon();
 		Statement stmt = a.getCon().createStatement();
@@ -83,7 +69,6 @@ public class order {
 		}
 		else if(status.equals("已发货"))
 		{String sql ="update orderlist set status='已签收	'where orderid='"+orderid+"'";
->>>>>>> b6054cac5f843d0f11242395180fb4269850931a
 		stmt.executeUpdate(sql);
 		stmt.close();
 		}
@@ -91,33 +76,21 @@ public class order {
 	}
 	public void givemymoneyback(int orderid)throws ClassNotFoundException, SQLException{
 		DBCon a=new DBCon();
-<<<<<<< HEAD
-		String sql ="update orderlist set status='閫�涓� where orderid='"+orderid+"'";
-=======
 		String sql ="update orderlist set status='退款中' where orderid='"+orderid+"'";
->>>>>>> b6054cac5f843d0f11242395180fb4269850931a
 		Statement stmt = a.getCon().createStatement();
 		stmt.executeUpdate(sql);
 		stmt.close();
 	}
 	public void givemymoneybackok(int orderid)throws ClassNotFoundException, SQLException{
 		DBCon a=new DBCon();
-<<<<<<< HEAD
-		String sql ="update orderlist set status='閫�鎴愬姛' where orderid='"+orderid+"'";
-=======
 		String sql ="update orderlist set status='退款成功' where orderid='"+orderid+"'";
->>>>>>> b6054cac5f843d0f11242395180fb4269850931a
 		Statement stmt = a.getCon().createStatement();
 		stmt.executeUpdate(sql);
 		stmt.close();
 	}
 	public void givemymoneybackrefused(int orderid)throws ClassNotFoundException, SQLException{
 		DBCon a=new DBCon();
-<<<<<<< HEAD
-		String sql ="update orderlist set status='閫�澶辫触' where orderid='"+orderid+"'";
-=======
 		String sql ="update orderlist set status='退款失败' where orderid='"+orderid+"'";
->>>>>>> b6054cac5f843d0f11242395180fb4269850931a
 		Statement stmt = a.getCon().createStatement();
 		stmt.executeUpdate(sql);
 		stmt.close();

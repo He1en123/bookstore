@@ -61,7 +61,6 @@
 					<%String userid= (String)session.getAttribute("userid") ;
 					if(userid!=null)
 					{
-						
 					%>
 					<li><a href="cart.jsp" name="cart">购物车</a></li>
 					<li>欢迎，<%=userid %></li>
@@ -79,24 +78,22 @@
 			</table>
 		</div>
 		<div id="body">
+				<form action = "/bookstore/Personal" method="post">
 				<table align="center" width="30%">
 				<tr><td></td><td><h4 align="left">修改个人信息</h4></td></tr>
-				<tr><th >姓名:</th><td><input type="text" value=<%=session.getAttribute("username") %>></td></tr>
+				<tr><th>姓名:</th><td><input type="text" value=<%=session.getAttribute("username") %> name="username"></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >账户:</th><td><input type="text" value=<%=session.getAttribute("userid") %>></td></tr>
+				<tr><th>账户:</th><td><input type="text" value=<%=session.getAttribute("userid") %> name="userid"></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >密码:</th><td><input type="text" value=<%=session.getAttribute("password") %>></td></tr>
+				<tr><th>密码:</th><td><input type="text" value=<%=session.getAttribute("password") %> name="password"></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >地址:</th><td><input type="text" value=<%=session.getAttribute("address") %>></td></tr>
+				<tr><th>地址:</th><td><input type="text" value=<%=session.getAttribute("address") %> name="address"></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >电话:</th><td><input type="text" value=<%=session.getAttribute("telephone") %>></td></tr>
-				<tr></tr><tr></tr>
-				<tr></tr><tr></tr>
-				<tr></tr><tr></tr>
+				<tr><th>电话:</th><td><input type="text" value=<%=session.getAttribute("telephone") %> name="telephone"></td></tr>
 				<tr><td colspan="2" align="center"><input type="submit" value="确定" style="width: 70px;" name="changesubmit">
 				<input type="reset" value="重置" style="width: 70px; "name="changereset"></td></tr>
-				<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
 				</table>
+				</form>
 		</div>
 	
 		<div id="foot">

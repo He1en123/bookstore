@@ -87,7 +87,29 @@ public class Personal extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
+		HttpSession session = request.getSession();
+		String ID = request.getParameter("userid");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String telephone = request.getParameter("telehone");
+		String address = request.getParameter("address");
+		Users user = new Users();
+		try {
+			user.updateuser(ID, username, password, telephone, address);
+			ResultSet rs = user.usersinfo(ID);
+			session.setAttribute("userid", ID);
+			session.setAttribute("username", username);
+			session.setAttribute("password", password);
+			session.setAttribute("telephone", telephone);
+			session.setAttribute("address", address);
+			request.getRequestDispatcher("personal.jsp").forward(request, response);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
