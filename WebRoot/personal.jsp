@@ -83,19 +83,19 @@
 				out.println("账号："+session.getAttribute("userid"));
 				 %>
 				<table align="center" width="30%">
-				<tr><td></td><td><h4 align="left">个人信息</h4></td><td><a  href="personalchange.html">
+				<tr><td></td><td><h4 align="left">个人信息</h4></td><td><a  href="personalchange.jsp">
 					<input type="submit" value="修改" style="width: 70px;"align="left" style="width: 70px; "></a></td></tr>
-				<tr><th >姓名：</th><td><%=request.getAttribute("username")%></td></tr>
+				<tr><th >姓名：</th><td><%=session.getAttribute("username")%></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >账户：</th><td><%=request.getAttribute("userid") %></td></tr>
+				<tr><th >账户：</th><td><%=session.getAttribute("userid") %></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >密码：</th><td><%=request.getAttribute("password") %></td></tr>
+				<tr><th >密码：</th><td><%=session.getAttribute("password") %></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >地址:</th><td><%=request.getAttribute("address") %></td></tr>
+				<tr><th >地址:</th><td><%=session.getAttribute("address") %></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >电话：</th><td><%=request.getAttribute("telephone") %></td></tr>
+				<tr><th >电话：</th><td><%=session.getAttribute("telephone") %></td></tr>
 				<tr></tr><tr></tr><tr></tr>
-				<tr><th >余额：</th><td><%=request.getAttribute("money") %> </td></tr>
+				<tr><th >余额：</th><td><%=session.getAttribute("money") %> </td></tr>
 					<tr></tr><tr></tr>	
 				<tr><th >充值：</th><td><input type="text" name="recharge" style="width: 42px; "></td>
 					<td><input type="button" name="moneyrechage" value="确定" align="left" style="width: 70px; "></td></tr>

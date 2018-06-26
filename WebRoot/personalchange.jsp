@@ -1,8 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" %>
 <!DOCTYPE html>
 <html>
   <head>
   <meta charset="UTF-8">
-    <title>商品简介</title>
+    <title>修改个人信息</title>
     <style>
     #head-left{float: left;
     }
@@ -43,6 +44,12 @@
 			width:100%; height:80px;
 		}
     </style>
+    <script type="text/javascript">
+			function a(userid){
+				window.location.href="/bookstore/Personal?userid="+userid;
+			}
+		
+		</script>
   </head>
   
   <body>
@@ -51,11 +58,19 @@
 					<a href="index.jsp"><img src="img/zhku.png" style="height: 70px;"/></a>
 		</div>
 		<div id="head-right">		
-					<img src="img/cart.gif" />
-					<a href="cart.html"  >购物车</a>|
-					<a href="register.jsp"  >用户注册</a>|
-					<a href="login.jsp" >用户登录</a>|
-					<a href="index.jsp"  >返回首页</a>			
+					<%String userid= (String)session.getAttribute("userid") ;
+					if(userid!=null)
+					{
+						
+					%>
+					<li><a href="cart.jsp" name="cart">购物车</a></li>
+					<li>欢迎，<%=userid %></li>
+					<li><a name="cart" onClick="a('<%=userid %>')">个人信息</a></li>
+					<%}else{ %>
+					<li><a href="register.jsp">注册</a></li>
+					<li><a href="login.jsp">登录</a></li>
+					<%} %>
+					</ul>
 			
 		</div>
 		<div >	
@@ -65,22 +80,21 @@
 		</div>
 		<div id="body">
 				<table align="center" width="30%">
-				<tr><td></td><td><h4 align="left">个人信息修改</h4></td></tr>
-				<tr><th >姓名:</th><td><input type="text" value="qqanna"></td></tr>
+				<tr><td></td><td><h4 align="left">修改个人信息</h4></td></tr>
+				<tr><th >姓名:</th><td><input type="text" value=<%=session.getAttribute("username") %>></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >账号:</th><td><input type="text" value="100"></td></tr>
+				<tr><th >账户:</th><td><input type="text" value=<%=session.getAttribute("userid") %>></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >密码:</th><td><input type="text" value="123456"></td></tr>
+				<tr><th >密码:</th><td><input type="text" value=<%=session.getAttribute("password") %>></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >邮箱：</th><td><input type="text" value="123456@qq.com"></td></tr>
+				<tr><th >地址:</th><td><input type="text" value=<%=session.getAttribute("address") %>></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >地址:</th><td><input type="text" value=" 广州仲恺农业工程学院""></td></tr>
-				<tr></tr><tr></tr>
-				<tr><th >手机号:</th><td><input type="text" value=" 13533800829""></td></tr>
+				<tr><th >电话:</th><td><input type="text" value=<%=session.getAttribute("telephone") %>></td></tr>
 				<tr></tr><tr></tr>
 				<tr></tr><tr></tr>
-				<tr><td colspan="2" align="center"><input type="button" value="提交" style="width: 70px;" name="changesubmit">
-				<input type="button" value="重置" style="width: 70px; "name="changereset"></td></tr>
+				<tr></tr><tr></tr>
+				<tr><td colspan="2" align="center"><input type="submit" value="确定" style="width: 70px;" name="changesubmit">
+				<input type="reset" value="重置" style="width: 70px; "name="changereset"></td></tr>
 				<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
 				</table>
 		</div>

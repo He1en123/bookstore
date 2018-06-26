@@ -58,12 +58,12 @@ public class Personal extends HttpServlet {
 			String telephone = rs.getString(4);
 			String address = rs.getString(5);
 			String money = rs.getString(6);
-			request.setAttribute("userid", ID);
-			request.setAttribute("username", username);
-			request.setAttribute("password", password);
-			request.setAttribute("telephone", telephone);
-			request.setAttribute("address", address);
-			request.setAttribute("money", money);
+			session.setAttribute("userid", ID);
+			session.setAttribute("username", username);
+			session.setAttribute("password", password);
+			session.setAttribute("telephone", telephone);
+			session.setAttribute("address", address);
+			session.setAttribute("money", money);
 			request.getRequestDispatcher("personal.jsp").forward(request, response);
 			}
 		} catch (ClassNotFoundException e) {
