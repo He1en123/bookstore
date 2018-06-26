@@ -69,7 +69,7 @@
 					<img src="img/cart.gif">
 					<ul>
 					<li><a href="cart.jsp" name="cart">购物车</a></li>
-					<li><a href="order.html">我的订单</a></li>
+					<li><a href="/bookstore/Order">我的订单</a></li>
 					
 					<li><a href="index.jsp" >返回首页</a></li>
 					</ul>
@@ -80,9 +80,7 @@
 </div>
 
 <div id="body">
-				<%String personnaluserid=(String)session.getAttribute("userid");
-				out.println("你好，"+session.getAttribute("userid"));
-				 %>
+				<%out.println("你好，"+session.getAttribute("userid"));%>
 				<form name = "f1" action = "personalchange.jsp">
 				<table align="center" width="30%">
 				<tr><td></td><td><h4 align="left">个人信息</h4></td><td>

@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="entry.Order1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
   <meta charset="UTF-8">
@@ -107,12 +112,19 @@
 						<th style="width: 100px; ">商品名</th>
 						<th style="width: 100px; ">价格</th>
 						<th style="width: 200px; ">收货地址</th></tr>
-						<% %>
 					<tbody id="jtd">
-					<tr><td><input type="checkbox"></td><td>001</td><td>思想政治</td><td>20</td><td>仲恺农业工程学院</td>
+					<%  
+						ArrayList<Order1> order = (ArrayList<Order1>)request.getAttribute("orderlist");
+						System.out.println(order);
+						System.out.println(order.get(1).getStatus());
+						System.out.println(order.size());
+						for(int i=0;i<order.size();i++){
+							System.out.println(order.get(i).getStatus());
+							if(order.get(i).getStatus().equals("待付款")){
+					%>
+					<tr><td><input type="checkbox"></td><td><%= order.get(i).getOrderid() %></td><td><%= order.get(i).getBookname() %></td><td><%= order.get(i).getTotalprice() %></td><td><%= order.get(i).getAddress() %></td>
 						</tr>
-					<tr><td><input type="checkbox"></td><td>001</td><td>思想政治</td><td>20</td>
-						<td>仲恺农业工程学院</td></tr>
+					<%}} %>
 					<tr><td colspan="5"><input type="button" value="支付" style="width: 60px; " align="left"></td></tr>
 				</tbody>
 				</table>
@@ -123,16 +135,32 @@
 					<th style="width: 100px; ">商品名</th>
 					<th style="width: 100px; ">价格</th>
 					<th style="width: 200px; ">收货地址</th></tr>
-					<tr><td></td><td></td><td></td><td></td><td><input type="button" value="提醒发货" style="width: 60px; "></td></tr>
+					<%
+					for(int i=0;i<order.size();i++){
+						System.out.println(order.get(i).getStatus());
+						if(order.get(i).getStatus().equals("待发货")){
+					%>
+					<tr><td><input type="checkbox"></td><td><%= order.get(i).getOrderid() %></td><td><%= order.get(i).getBookname() %></td><td><%= order.get(i).getTotalprice() %></td><td><%= order.get(i).getAddress() %></td>
+						</tr>
+					<input type="button" value="提醒发货" style="width: 60px; "></td></tr>
+					<%}} %>
 				</table>
 					<br>	<br>	<br>
 				<table align="center">
-					<tr><th rowspan="10">已收货</th>
+					<tr><th rowspan="10">未收货</th>
 					<th style="width: 100px; ">订单号</th>
 					<th style="width: 100px; ">商品名</th>
 					<th style="width: 100px; ">价格</th>
 					<th style="width: 200px; ">收货地址</th></tr>
-					<tr><td></td><td></td><td></td><td></td><td><input type="button" value="去签收" style="width: 60px; "></td></tr>
+					<%
+						for(int i=0;i<order.size();i++){
+						System.out.println(order.get(i).getStatus());
+						if(order.get(i).getStatus().equals("未收货")){
+					%>
+					<tr><td><input type="checkbox"></td><td><%= order.get(i).getOrderid() %></td><td><%= order.get(i).getBookname() %></td><td><%= order.get(i).getTotalprice() %></td><td><%= order.get(i).getAddress() %></td>
+						</tr>
+					<input type="button" value="去签收" style="width: 60px; "></td></tr>
+					<%}} %>
 				</table>
 					<br>	<br>	<br>
 				<table align="center">
@@ -141,7 +169,15 @@
 					<th style="width: 100px; ">商品名</th>
 					<th style="width: 100px; ">价格</th>
 					<th style="width: 200px; ">收货地址</th></tr>
-					<tr><td></td><td></td><td></td><td></td><td><input type="button" value="去评价" style="width: 60px; "></td></tr>
+					<%
+						for(int i=0;i<order.size();i++){
+						System.out.println(order.get(i).getStatus());
+						if(order.get(i).getStatus().equals("已签收")){
+					%>
+					<tr><td><input type="checkbox"></td><td><%= order.get(i).getOrderid() %></td><td><%= order.get(i).getBookname() %></td><td><%= order.get(i).getTotalprice() %></td><td><%= order.get(i).getAddress() %></td>
+						</tr>
+					<input type="button" value="去评价" style="width: 60px; "></td></tr>
+					<%}} %>
 				</table>
 		</div>
 		<div>

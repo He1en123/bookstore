@@ -1,5 +1,7 @@
 package entry;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,10 +16,12 @@ public class order {
 	String address;
 	int tel;
 	String status;
+	public Connection conn = null;
+	
 	public int getorderid() throws ClassNotFoundException, SQLException{ 
 		//查询当前有多少条订单，很有用的数字来的
-		DBCon a=new DBCon();
-		Statement stmt = a.getCon().createStatement();
+		conn =new DBCon().getCon();
+		Statement stmt = conn.createStatement();
 		String countid="select * from orderlist";
 		ResultSet rs=stmt.executeQuery(countid);
 		rs.last();
@@ -33,21 +37,30 @@ public class order {
 			String address,
 			int tel,
 			String status) throws ClassNotFoundException, SQLException{
-		DBCon a=new DBCon();
+		conn =new DBCon().getCon();
 		String sql ="insert into orderlist (orderid,userid,username,totalprice,address,tel,status)"
 				+ " VALUES ('"+orderid+"','"+userid+"','"+username+"','"+totalprice+"','"+address+"','tel','"+status+"')";
-		Statement stmt = a.getCon().createStatement();
+		Statement stmt = conn.createStatement();
 		stmt.executeUpdate(sql);
 		stmt.close();
 	}
-	public ResultSet getorderbystatus(String status) throws ClassNotFoundException, SQLException{ 
-		//根据类型获得订单类型用，返回resultset类型
-		DBCon a=new DBCon();
-		String sql ="selecet * from order where status ='"+status+"'";
-		Statement stmt = a.getCon().createStatement();
-		ResultSet rs=stmt.executeQuery(sql);
+	public ResultSet getorderbyuserid(String userid) throws ClassNotFoundException, SQLException{ 
+		//根据userid获得订单类型，返回resultset类型
+		conn =new DBCon().getCon();
+		String sql ="select book.bookname,orderlist.address,orderlist.`status`,orderlist.totalprice,orderlist.orderid from book,orderbook,orderlist WHERE book.bookid=orderbook.bookid and orderbook.orderid=orderlist.orderid AND orderlist.userid=?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, userid);
+		ResultSet rs=pstmt.executeQuery();
 		return rs;
 	};
+	public ResultSet getmyorderdetail(String orderid) throws ClassNotFoundException, SQLException{
+		conn =new DBCon().getCon();
+		String sql = "select * from orderbook,book where orderbook.orderid = ? and orderbook.bookid=book.bookid";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, orderid);
+		ResultSet rs = pstmt.executeQuery();
+		return rs;
+	}
 	
 
 	
