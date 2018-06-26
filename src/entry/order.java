@@ -15,11 +15,6 @@ public class order {
 	int tel;
 	String status;
 	public int getorderid() throws ClassNotFoundException, SQLException{ 
-<<<<<<< HEAD
-		//鏌ヨ褰撳墠鏈夊灏戞潯璁㈠崟锛屽緢鏈夌敤鐨勬暟瀛楁潵鐨�
-=======
-		//查询当前有多少条订单，很有用的数字来的
->>>>>>> b6054cac5f843d0f11242395180fb4269850931a
 		DBCon a=new DBCon();
 		Statement stmt = a.getCon().createStatement();
 		String countid="select * from orderlist";
@@ -45,11 +40,6 @@ public class order {
 		stmt.close();
 	}
 	public ResultSet getorderbystatus(String status) throws ClassNotFoundException, SQLException{ 
-<<<<<<< HEAD
-		//鏍规嵁绫诲瀷鑾峰緱璁㈠崟绫诲瀷鐢紝杩斿洖resultset绫诲瀷
-=======
-		//根据类型获得订单类型用，返回resultset类型
->>>>>>> b6054cac5f843d0f11242395180fb4269850931a
 		DBCon a=new DBCon();
 		String sql ="selecet * from order where status ='"+status+"'";
 		Statement stmt = a.getCon().createStatement();
@@ -62,8 +52,7 @@ public class order {
 	
 	
 	public void updateorderbyidandstatus(int orderid,String status)throws ClassNotFoundException, SQLException{
-<<<<<<< HEAD
-		//鏍规嵁褰撳墠璁㈠崟鍙峰拰璁㈠崟鐘舵�淇敼璁㈠崟鐘舵�
+		
 		DBCon a=new DBCon();
 		Statement stmt = a.getCon().createStatement();
 		if(status.equals("鏈粯娆�))

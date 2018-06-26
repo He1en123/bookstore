@@ -76,6 +76,12 @@
 			clear: both;
 		}
 		</style>
+		<script type="text/javascript">
+			function a(userid){
+				window.location.href="/bookstore/Personal?userid="+userid;
+			}
+		
+		</script>
 	</head>
 	<body>
 		<div  id="head">
@@ -83,13 +89,14 @@
 				<div id="ul">
 					<img src="img/cart.gif">
 					<ul>
-					<%String userid=(String)request.getAttribute("userid") ;
+					<%String userid= (String)session.getAttribute("userid") ;
 					if(userid!=null)
-					{out.println(request.getAttribute("userid"));
-					session.setAttribute("userid", userid);
+					{
+						
 					%>
 					<li><a href="cart.jsp" name="cart">购物车</a></li>
-					<li><a href="Personal" name="cart">个人信息</a></li>
+					<li>欢迎，<%=userid %></li>
+					<li><a name="cart" onClick="a('<%=userid %>')">个人信息</a></li>
 					<%}else{ %>
 					<li><a href="register.jsp">注册</a></li>
 					<li><a href="login.jsp">登录</a></li>

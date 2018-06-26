@@ -6,15 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
-
+import javax.servlet.http.HttpSession;
 
 import entry.Users;
 
+@WebServlet("/Personal")
 public class Personal extends HttpServlet {
 
 	/**
@@ -44,11 +44,13 @@ public class Personal extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String userid = (String) request.getAttribute("userid");
+		HttpSession session = request.getSession();
+		String userid = (String) session.getAttribute("userid");
+		System.out.println(userid);
 		Users user = new Users();
 		try {
 			ResultSet rs = user.usersinfo(userid);
+			while(rs.next()){
 			String ID = rs.getString(1);
 			System.out.println(ID);
 			String username = rs.getString(2);
@@ -63,6 +65,7 @@ public class Personal extends HttpServlet {
 			request.setAttribute("address", address);
 			request.setAttribute("money", money);
 			request.getRequestDispatcher("personal.jsp").forward(request, response);
+			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -84,20 +87,7 @@ public class Personal extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the POST method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		doGet(request, response);
 	}
 
 	/**

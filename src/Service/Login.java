@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import entry.Users;
 
@@ -34,9 +35,11 @@ public class Login extends HttpServlet {
 		String ID = request.getParameter("ID");
 		String password = request.getParameter("password");
 		Users us = new Users();
+		System.out.println(ID);
+		HttpSession session = request.getSession();
 		try {
 			if(us.checkusers(ID, password)==1){
-				request.setAttribute("userid", ID);
+				session.setAttribute("userid", ID);
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 		} catch (ClassNotFoundException e) {
