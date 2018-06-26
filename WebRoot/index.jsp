@@ -80,7 +80,9 @@
 			function a(userid){
 				window.location.href="/bookstore/Personal?userid="+userid;
 			}
-		
+			function remove(userid){
+				window.location.href="/bookstore/Remove?userid="+userid;
+			}
 		</script>
 	</head>
 	<body>
@@ -96,6 +98,7 @@
 					%>
 					<li><a href="cart.jsp" name="cart">购物车</a></li>
 					<li>欢迎，<%=userid %></li>
+					<li><a name="cart" onClick="remove('<%=userid%>')">退出</a></li>
 					<li><a name="cart" onClick="a('<%=userid %>')">个人信息</a></li>
 					<%}else{ %>
 					<li><a href="register.jsp">注册</a></li>
