@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.SessionException;
 
 import entry.Users;
 
@@ -35,6 +36,7 @@ public class Login extends HttpServlet {
 		Users us = new Users();
 		try {
 			if(us.checkusers(ID, password)==1){
+				request.setAttribute("userid", ID);
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 		} catch (ClassNotFoundException e) {

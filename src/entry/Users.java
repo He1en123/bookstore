@@ -41,4 +41,22 @@ public class Users {
 			return 0;//存在返回1
 	}
 	
+	public ResultSet usersinfo(String userid) throws SQLException, ClassNotFoundException{
+		//返回关于用户信息的结果集	
+		DBCon a=new DBCon();
+			String sql="select * from users where "
+					+ "userid=? ";
+			PreparedStatement pstmt = a.getCon().prepareStatement(sql);
+			pstmt.setString(1, userid);
+			ResultSet rs = pstmt.executeQuery();
+			return rs;//似乎需要rs.next();
+	}
+	public ResultSet allusersinfo() throws SQLException, ClassNotFoundException{
+		//返回关于用户信息的结果集	
+		DBCon a=new DBCon();
+			String sql="select * from users where ";
+			PreparedStatement pstmt = a.getCon().prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			return rs;//似乎需要rs.next();
+	}
 }

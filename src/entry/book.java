@@ -51,6 +51,15 @@ public class book {
 		stmt.executeUpdate(sql);
 		stmt.close();
 }
+	public ResultSet getbook(int bookid) throws ClassNotFoundException, SQLException{
+		//通过bookid获得一本书的信息，如果能实现，下面一堆get都可以不要了
+		DBCon a=new DBCon();
+		String sql="select * from book where bookid='"+bookid+"'";
+		Statement stmt = a.getCon().createStatement();
+		stmt.executeQuery(sql);
+		ResultSet rs=stmt.executeQuery(sql);rs.next();
+		return rs;
+	}
 	public String getbookname(int bookid) throws ClassNotFoundException, SQLException{
 		DBCon a=new DBCon();
 		String sql="select bookname from book where bookid='"+bookid+"'";
@@ -114,5 +123,13 @@ public class book {
 		ResultSet rs=stmt.executeQuery(sql);
 		rs.next();
 		return rs.getInt(1);
+	}
+	public ResultSet selectbookbytype(String type) throws ClassNotFoundException, SQLException{
+		String sql="select * from book where type='"+type+"'";
+		DBCon a=new DBCon();
+		Statement stmt = a.getCon().createStatement();
+		ResultSet rs=stmt.executeQuery(sql);
+		rs.next();
+		return rs;
 	}
 }
