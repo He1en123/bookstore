@@ -89,7 +89,7 @@
 					session.setAttribute("userid", userid);
 					%>
 					<li><a href="cart.jsp" name="cart">购物车</a></li>
-					<li><a href="personal.jsp" name="cart">个人信息</a></li>
+					<li><a href="Personal" name="cart">个人信息</a></li>
 					<%}else{ %>
 					<li><a href="register.jsp">注册</a></li>
 					<li><a href="login.jsp">登录</a></li>

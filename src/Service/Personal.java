@@ -50,6 +50,7 @@ public class Personal extends HttpServlet {
 		try {
 			ResultSet rs = user.usersinfo(userid);
 			String ID = rs.getString(1);
+			System.out.println(ID);
 			String username = rs.getString(2);
 			String password = rs.getString(3);
 			String telephone = rs.getString(4);
