@@ -1,8 +1,9 @@
+<%@ page language="java" import="java.sql.*" import ="entry.*"  %>
 <!DOCTYPE html>
 <html>
   <head>
   <meta charset="UTF-8">
-    <title>商品简介</title>
+    <title>ååç®ä»</title>
     <style>
   #head-left{width: 100%;}
 	#ul{
@@ -66,10 +67,10 @@
 				<div id="ul">
 					<img src="img/cart.gif">
 					<ul>
-					<li><a href="cart.html" name="cart">购物车</a></li>
-					<li><a href="order.html">订单详情</a></li>
+					<li><a href="cart.html" name="cart">è´­ç©è½¦</a></li>
+					<li><a href="order.html">è®¢åè¯¦æ</a></li>
 					
-					<li><a href="index.jsp" >返回首页</a></li>
+					<li><a href="index.jsp" >è¿åé¦é¡µ</a></li>
 					</ul>
 				</div>
 					<div id="brow">	
@@ -78,26 +79,29 @@
 </div>
 
 <div id="body">
-				
+				<%String personnaluserid=(String)session.getAttribute("userid");
+				Users user=new Users();
+				ResultSet rs=user.usersinfo(personnaluserid);
+				out.println("账户："+session.getAttribute("userid"));
+				rs.next();
+				 %>
 				<table align="center" width="30%">
-				<tr><td></td><td><h4 align="left">个人中心</h4></td><td><a  href="personalchange.html">
-					<input type="submit" value="修改信息" style="width: 70px;"align="left" style="width: 70px; "></a></td></tr>
-				<tr><th >姓名:</th><td>qqanna</td></tr>
+				<tr><td></td><td><h4 align="left">ä¸ªäººä¸­å¿</h4></td><td><a  href="personalchange.html">
+					<input type="submit" value="ä¿®æ¹ä¿¡æ¯" style="width: 70px;"align="left" style="width: 70px; "></a></td></tr>
+				<tr><th >å§å:</th><td><%=rs.getString(2) %></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >账号:</th><td>100</td></tr>
+				<tr><th >è´¦å·:</th><td><%=rs.getString(1) %></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >密码:</th><td>123456</td></tr>
+				<tr><th >å¯ç :</th><td><%=rs.getString(3) %></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >邮箱:</th><td>100</td></tr>
+				<tr><th >å°å:</th><td><%=rs.getString(5) %></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >地址:</th><td>广州仲恺农业工程学院</td></tr>
-				<tr></tr><tr></tr>
-				<tr><th >手机号:</th><td>13533800829</td></tr>
+				<tr><th >ææºå·:</th><td><%=rs.getString(4) %></td></tr>
 				<tr></tr><tr></tr><tr></tr>
-				<tr><th >余额:</th><td>100 </td><td><input type="button" value="点击充值" align="left" style="width: 70px; "></td></tr>
+				<tr><th >ä½é¢:</th><td><%=rs.getString(6) %> </td><td><input type="button" value="ç¹å»åå¼" align="left" style="width: 70px; "></td></tr>
 					<tr></tr><tr></tr>	
-				<tr><th >充值数额:</th><td><input type="text" name="recharge" style="width: 42px; "></td>
-					<td><input type="button" name="moneyrechage" value="充值" align="left" style="width: 70px; "></td></tr>
+				<tr><th >åå¼æ°é¢:</th><td><input type="text" name="recharge" style="width: 42px; "></td>
+					<td><input type="button" name="moneyrechage" value="åå¼" align="left" style="width: 70px; "></td></tr>
 				<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
 				<tr><td align="right"> </td>
 				<td align="center"></td></tr>

@@ -58,14 +58,14 @@
 			color: #FFFFFF;
 			font-weight: bold;}
 		
-		#content{float: right;
-			}
-		#content form{margin-left: 100px;
-			}
-		
-	
+		#content{
+			width:900px; 
+			margin-top:10px; 
+			margin-right:auto;
+			margin-left:auto;}
+		.table{width: 100%;
+			border: 10px;
 		}
-		.getbook{margin-bottom: 200px;}
 		#foot{
 			
 			width:100%;
@@ -73,7 +73,6 @@
 			margin-top:15px;
 			bottom:0; left:0;
 			width:100%; height:80px;
-			clear: both;
 		}
 		</style>
 	</head>
@@ -128,22 +127,15 @@
 				</tr>				
 			</table>	
 		</div>
-		<div >
-			
-				<% book a=new book();
-						for(int i=1;i<=a.booknum();i++) {
-							if((i-1)%4==0)%>
-					<div id="content" >
-				<form name="<%= i %>" action="" onsubmit="return check()" >
-				<img src="<%= a.getbookpic(i)%>" height="197" width="130" alt="图片1" usemap="#map1"><br>
-				书名:<%= a.getbookname(i) %>
-				</form>
-				</div>
-			<% }%>
-			
-			
-			
-			
+		<div id="content">
+			<table width="100%">
+					<td align="center"></td>
+					
+					<td> </td>
+					<td> </td>
+					<td> </td>
+					
+			</table>
 			<br/><br /><br />	
 		</div>
 		<div id="foot">

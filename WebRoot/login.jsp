@@ -1,7 +1,9 @@
+<%@page import="javax.swing.text.Document"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
+	
 		<meta charset="utf-8">
 		<title>用户登录</title>
 		<style >
@@ -66,13 +68,9 @@
 					</div>	
 </div>
 <div>	<h2 align="center"> 用户登录</h2>
-<<<<<<< HEAD
-		<form action="bookstore/Login" method="post" name="form2" onSubmit="return check()">
-=======
 		<form action="/bookstore/Login" method="post" name="form2" onSubmit="return check()">
->>>>>>> 8cc2bbcdf80afccea6fddcd9601a1a5abbe6ad47
 			<table align="center" width="28%">
-			<tr><th width="30%">姓名</th><td><input type="text" name="ID"></td></tr>
+			<tr><th width="30%">账户</th><td><input type="text" name="ID" id=userid></td></tr>
 			<tr><th width="30%">密码</th><td><input type="password" name="password"></td></tr>
 			<tr><th colspan="2" width="10%" style="height: 100px; ">
 			<input type="submit" value="登录">&nbsp;&nbsp;&nbsp;
@@ -96,6 +94,11 @@
 
 
 
-	
+	<script type="text/javascript">
+  	    function check(){
+  	    	
+  	    	}
+  	    	
+  	    </script>
 	
 </html>

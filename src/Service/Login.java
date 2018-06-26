@@ -3,6 +3,7 @@ package Service;
 import java.io.IOException;
 import java.sql.SQLException;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,6 +36,7 @@ public class Login extends HttpServlet {
 		Users us = new Users();
 		try {
 			if(us.checkusers(ID, password)==1){
+				request.setAttribute("userid", ID);
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 		} catch (ClassNotFoundException e) {
