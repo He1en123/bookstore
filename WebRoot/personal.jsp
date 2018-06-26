@@ -59,6 +59,7 @@
 			width:100%; height:80px;
 		}
     </style>
+    
   </head>
   
 <body>
@@ -67,7 +68,7 @@
 				<div id="ul">
 					<img src="img/cart.gif">
 					<ul>
-					<li><a href="cart.html" name="cart">购物车</a></li>
+					<li><a href="cart.jsp" name="cart">购物车</a></li>
 					<li><a href="order.html">我的订单</a></li>
 					
 					<li><a href="index.jsp" >返回首页</a></li>
@@ -80,11 +81,12 @@
 
 <div id="body">
 				<%String personnaluserid=(String)session.getAttribute("userid");
-				out.println("账号："+session.getAttribute("userid"));
+				out.println("你好，"+session.getAttribute("userid"));
 				 %>
+				<form name = "f1" action = "personalchange.jsp">
 				<table align="center" width="30%">
-				<tr><td></td><td><h4 align="left">个人信息</h4></td><td><a  href="personalchange.jsp">
-					<input type="submit" value="修改" style="width: 70px;"align="left" style="width: 70px; "></a></td></tr>
+				<tr><td></td><td><h4 align="left">个人信息</h4></td><td>
+					<input type="submit" value="修改" style="width: 70px;"align="left" style="width: 70px; "></td></tr>
 				<tr><th >姓名：</th><td><%=session.getAttribute("username")%></td></tr>
 				<tr></tr><tr></tr>
 				<tr><th >账户：</th><td><%=session.getAttribute("userid") %></td></tr>
@@ -98,7 +100,7 @@
 				<tr><th >余额：</th><td><%=session.getAttribute("money") %> </td></tr>
 					<tr></tr><tr></tr>	
 				<tr><th >充值：</th><td><input type="text" name="recharge" style="width: 42px; "></td>
-					<td><input type="button" name="moneyrechage" value="确定" align="left" style="width: 70px; "></td></tr>
+					<td><input type="button" name="moneyrechage" value="确定" align="left" style="width: 70px;" onClick="rec()"></td></tr>
 				<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
 				<tr><td align="right"> </td>
 				<td align="center"></td></tr>
@@ -106,6 +108,7 @@
 				<tr></tr><tr></tr><tr></tr>
 				<tr></tr><tr></tr><tr></tr>
 				</table>
+				</form>
 </div>
 	
 <div id="foot">
@@ -128,6 +131,12 @@
 		</table>
 </div>	
 
-
+	<script type="text/javascript">
+    	
+   		function rec(){
+   			var money = document.f1.recharge.value;
+			window.location.href="/bookstore/Recharge?money="+money;
+	}
+    </script>
   </body>
 </html>

@@ -73,4 +73,12 @@ public class Users {
 		pstmt.setString(6, userid);
 		pstmt.execute();
 	}
+	public void updatemoney(String money,String userid) throws ClassNotFoundException, SQLException{
+		conn = new DBCon().getCon();
+		String sql = "UPDATE users SET money = ? WHERE userid = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, money);
+		pstmt.setString(2, userid);
+		pstmt.execute();
+	}
 }

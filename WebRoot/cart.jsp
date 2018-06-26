@@ -1,8 +1,9 @@
+<%@ page language="java" import="java.sql.*" import ="entry.*"  pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html>
   <head>
   <meta charset="UTF-8">
-    <title>商品简介</title>
+    <title>ååç®ä»</title>
     <style>
    #head-left{width: 100%;}
 	#ul{
@@ -62,10 +63,10 @@
 				<div id="ul">
 					<img src="img/personal.gif" style="height: 20px; width: 20px; ">
 					<ul>
-					<li><a href="personal.html" name="cart">个人中心</a></li>
-					<li><a href="order.html">订单详情</a></li>
+					<li><a href="personal.jsp" name="cart">个人中心</a></li>
+					<li><a href="order.html">我的订单</a></li>
 					
-					<li><a href="index.jsp" >返回首页</a></li>
+					<li><a href="index.jsp" >返回主页</a></li>
 					</ul>
 				</div>
 					<div id="brow">	
@@ -75,17 +76,17 @@
 		<div id="body">
 				
 				<table align="center" width="40%">
-					<tr><td colspan="4" align="center" ><h4 >购物车</h4></td></tr>
-					<tr><td width="20%"><h5>订单号</h5></td>
-						<td width="20%"><h5>商品名</h5></td>
-						<td width="20%"><h5>价格</h5></td>
-						<td width="50%"><h5>收获地址</h5></td>
+					<tr><td colspan="4" align="center" ><h4 >è´­ç©è½¦</h4></td></tr>
+					<tr><td width="20%"><h5>è®¢åå·</h5></td>
+						<td width="20%"><h5>ååå</h5></td>
+						<td width="20%"><h5>ä»·æ ¼</h5></td>
+						<td width="50%"><h5>æ¶è·å°å</h5></td>
 					<tr>
 					<tr><td width="20%">001</td>
-						<td width="20%">思想政治</td>
-						<td width="20%">20元</td>
-						<td width="50%">仲恺农业工程学院</td>
-						<td><input type="button" value="去支付"></td>
+						<td width="20%">ææ³æ¿æ²»</td>
+						<td width="20%">20å</td>
+						<td width="50%">ä»²æºåä¸å·¥ç¨å­¦é¢</td>
+						<td><input type="button" value="å»æ¯ä»"></td>
 					<tr>
 					<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
 				
