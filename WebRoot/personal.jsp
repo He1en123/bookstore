@@ -1,9 +1,9 @@
-<%@ page language="java" import="java.sql.*" import ="entry.*"  %>
+<%@ page language="java" import="java.sql.*" import ="entry.*"  pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html>
   <head>
   <meta charset="UTF-8">
-    <title>ååç®ä»</title>
+    <title>个人信息</title>
     <style>
   #head-left{width: 100%;}
 	#ul{
@@ -67,10 +67,10 @@
 				<div id="ul">
 					<img src="img/cart.gif">
 					<ul>
-					<li><a href="cart.html" name="cart">è´­ç©è½¦</a></li>
-					<li><a href="order.html">è®¢åè¯¦æ</a></li>
+					<li><a href="cart.html" name="cart">购物车</a></li>
+					<li><a href="order.html">我的订单</a></li>
 					
-					<li><a href="index.jsp" >è¿åé¦é¡µ</a></li>
+					<li><a href="index.jsp" >返回首页</a></li>
 					</ul>
 				</div>
 					<div id="brow">	
@@ -80,28 +80,25 @@
 
 <div id="body">
 				<%String personnaluserid=(String)session.getAttribute("userid");
-				Users user=new Users();
-				ResultSet rs=user.usersinfo(personnaluserid);
-				out.println("账户："+session.getAttribute("userid"));
-				rs.next();
+				out.println("账号："+session.getAttribute("userid"));
 				 %>
 				<table align="center" width="30%">
-				<tr><td></td><td><h4 align="left">ä¸ªäººä¸­å¿</h4></td><td><a  href="personalchange.html">
-					<input type="submit" value="ä¿®æ¹ä¿¡æ¯" style="width: 70px;"align="left" style="width: 70px; "></a></td></tr>
-				<tr><th >å§å:</th><td><%=rs.getString(2) %></td></tr>
+				<tr><td></td><td><h4 align="left">个人信息</h4></td><td><a  href="personalchange.html">
+					<input type="submit" value="修改" style="width: 70px;"align="left" style="width: 70px; "></a></td></tr>
+				<tr><th >姓名：</th><td><%=request.getAttribute("username")%></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >è´¦å·:</th><td><%=rs.getString(1) %></td></tr>
+				<tr><th >账户：</th><td><%=request.getAttribute("userid") %></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >å¯ç :</th><td><%=rs.getString(3) %></td></tr>
+				<tr><th >密码：</th><td><%=request.getAttribute("password") %></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >å°å:</th><td><%=rs.getString(5) %></td></tr>
+				<tr><th >地址:</th><td><%=request.getAttribute("address") %></td></tr>
 				<tr></tr><tr></tr>
-				<tr><th >ææºå·:</th><td><%=rs.getString(4) %></td></tr>
+				<tr><th >电话：</th><td><%=request.getAttribute("telephone") %></td></tr>
 				<tr></tr><tr></tr><tr></tr>
-				<tr><th >ä½é¢:</th><td><%=rs.getString(6) %> </td><td><input type="button" value="ç¹å»åå¼" align="left" style="width: 70px; "></td></tr>
+				<tr><th >余额：</th><td><%=request.getAttribute("money") %> </td></tr>
 					<tr></tr><tr></tr>	
-				<tr><th >åå¼æ°é¢:</th><td><input type="text" name="recharge" style="width: 42px; "></td>
-					<td><input type="button" name="moneyrechage" value="åå¼" align="left" style="width: 70px; "></td></tr>
+				<tr><th >充值：</th><td><input type="text" name="recharge" style="width: 42px; "></td>
+					<td><input type="button" name="moneyrechage" value="确定" align="left" style="width: 70px; "></td></tr>
 				<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
 				<tr><td align="right"> </td>
 				<td align="center"></td></tr>
