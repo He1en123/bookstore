@@ -74,20 +74,39 @@
 					</div>	
 		</div>
 		<div id="body">
+				<%
 				
+				
+				
+				
+				 %>
 				<table align="center" width="40%">
-					<tr><td colspan="4" align="center" ><h4 >è´­ç©è½¦</h4></td></tr>
-					<tr><td width="20%"><h5>è®¢åå·</h5></td>
-						<td width="20%"><h5>ååå</h5></td>
-						<td width="20%"><h5>ä»·æ ¼</h5></td>
-						<td width="50%"><h5>æ¶è·å°å</h5></td>
+					<tr><td colspan="4" align="center" ><h4 >购物车</h4></td></tr>
+					<tr><td width="20%"><h5>编号</h5></td>
+						<td width="20%"><h5>书名</h5></td>
+						<td width="20%"><h5>单价</h5></td>
+						<td width="50%"><h5>数量</h5></td>
 					<tr>
-					<tr><td width="20%">001</td>
-						<td width="20%">ææ³æ¿æ²»</td>
-						<td width="20%">20å</td>
-						<td width="50%">ä»²æºåä¸å·¥ç¨å­¦é¢</td>
-						<td><input type="button" value="å»æ¯ä»"></td>
-					<tr>
+					<%
+						String userid = (String)session.getAttribute("userid");
+						mycart a=new mycart();
+						book b=new book();
+						ResultSet rs=a.checkmycart(userid);
+					 while(rs.next()){
+					 %>
+					<tr><td width="20%"><%= rs.getInt(2) %></td>
+					<%
+					int bookid=rs.getInt(2);
+					 %><form action="addtoorder.jsp">
+						<td width="20%"><%= b.getbookname(bookid) %></td>
+						<td width="20%"><%= b.getbookprice(bookid) %></td>
+						<td width="50%"><%= rs.getInt(3) %></td>
+						<input type="hidden" name="bookid" value="<%= rs.getInt(2) %>">
+						<input type="hidden" name="bookname" value="<%= b.getbookname(bookid) %>">
+						<input type="hidden" name="booknum" value="<%= rs.getInt(3) %>">
+						<td><input type="submit" value="购买"></td>
+					</tr></form>
+					<%} %>
 					<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
 				
 				</table>

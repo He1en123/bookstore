@@ -85,6 +85,15 @@
 			}
 		</script>
 	</head>
+	<script type="text/javaScript">
+
+		function check(i){
+		}
+		
+		</script>
+	
+	
+	
 	<body>
 		<div  id="head">
 				<a href="index.jsp"><img src="img/zhku.png" style="height: 70px;"/></a>	
@@ -144,9 +153,11 @@
 						for(int i=1;i<=a.booknum();i++) {
 							if((i-1)%4==0)%>
 					<div id="content" >
-				<form name="<%= i %>" action="" onsubmit="return check()" >
-				<img src="<%= a.getbookpic(i)%>" height="197" width="130" alt="图片1" usemap="#map1"><br>
-				书名:<%= a.getbookname(i) %>
+				<form id="<%= i %>" name="<%= i %>" action="brief.jsp" onsubmit="return check('<%= i %>' )" >
+				<img src="<%= a.getbookpic(i)%>" height="197" width="130" alt="图片1" ><br>
+				书名:<%= a.getbookname(i)%><input type="submit" value="查看" >
+				<input type="hidden" name="bookid" value="<%= i%>">
+				
 				</form>
 				</div>
 			<% }%>

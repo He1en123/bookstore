@@ -68,13 +68,13 @@ public class book {
 		ResultSet rs=stmt.executeQuery(sql);rs.next();
 		return rs.getString(1);
 	}
-	public String getbookprice(int bookid) throws ClassNotFoundException, SQLException{
+	public int getbookprice(int bookid) throws ClassNotFoundException, SQLException{
 		DBCon a=new DBCon();
 		String sql="select price from book where bookid='"+bookid+"'";
 		Statement stmt = a.getCon().createStatement();
 		stmt.executeQuery(sql);
 		ResultSet rs=stmt.executeQuery(sql);rs.next();
-		return rs.getString(1);
+		return rs.getInt(1);
 	}
 	public String getbooktype(int bookid) throws ClassNotFoundException, SQLException{
 		DBCon a=new DBCon();
@@ -93,13 +93,13 @@ public class book {
 		rs.next();
 		return rs.getString(1);
 	}
-	public String getbookstorage(int bookid) throws ClassNotFoundException, SQLException{
+	public int getbookstorage(int bookid) throws ClassNotFoundException, SQLException{
 		DBCon a=new DBCon();
 		String sql="select storage from book where bookid='"+bookid+"'";
 		Statement stmt = a.getCon().createStatement();
 		stmt.executeQuery(sql);
 		ResultSet rs=stmt.executeQuery(sql);rs.next();
-		return rs.getString(1);
+		return rs.getInt(1);
 	}
 	public String getbookstatus(int bookid) throws ClassNotFoundException, SQLException{
 		DBCon a=new DBCon();
