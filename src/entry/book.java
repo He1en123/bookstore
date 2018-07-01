@@ -3,6 +3,8 @@ package entry;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import DAO.DBCon;
 
@@ -131,5 +133,40 @@ public class book {
 		ResultSet rs=stmt.executeQuery(sql);
 		rs.next();
 		return rs;
+	}
+	public List<Book1> getallbook() throws ClassNotFoundException, SQLException{
+		DBCon a =new DBCon();
+		String sql = "SELECT * FROM book";
+		Statement stmt = a.getCon().createStatement();
+		ResultSet rs = stmt.executeQuery(sql);
+		List<Book1> books = new ArrayList<Book1>();
+		while(rs.next()){
+			int bookid = rs.getInt("bookid");
+			String bookname = rs.getString("bookname");
+			int price  = rs.getInt("price");
+			String type = rs.getString("type");
+			String pic = rs.getString("pic");
+			int storage = rs.getInt("storage");
+			String status = rs.getString("status");
+			String detail = rs.getString("detail");
+			Book1 book = new Book1();
+			book.setBookid(bookid);
+			book.setBookname(bookname);
+			book.setPrice(price);
+			book.setType(type);
+			book.setPic(pic);
+			book.setStorage(storage);
+			book.setStatus(status);
+			book.setDetail(detail);
+			books.add(book);
+		}
+		return books;
+	}
+	public void outbook(int bookid) throws ClassNotFoundException, SQLException{
+		DBCon a=new DBCon();
+		String sql="UPDATE book SET status='下架'  where bookid='"+bookid+"'";
+		Statement stmt = a.getCon().createStatement();
+		stmt.execute(sql);
+		stmt.close();
 	}
 }

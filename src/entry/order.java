@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import DAO.DBCon;
 
@@ -119,6 +121,36 @@ public class order {
 		DBCon a=new DBCon();
 		String sql ="update orderlist set status='退款失败' where orderid='"+orderid+"'";
 		Statement stmt = a.getCon().createStatement();
+		stmt.executeUpdate(sql);
+		stmt.close();
+	}
+	public List<Order1> orderinfo() throws ClassNotFoundException, SQLException{
+		DBCon a =new DBCon();
+		conn = a.getCon();
+		List<Order1> order = new ArrayList<Order1>();
+		String sql = "select book.bookname,orderlist.address,orderlist.totalprice,orderlist.`status`,orderlist.orderid from book,orderbook,orderlist WHERE book.bookid=orderbook.bookid and orderbook.orderid=orderlist.orderid";
+		Statement stmt = conn.createStatement();
+		java.sql.ResultSet rs = stmt.executeQuery(sql);
+		while (rs.next()) {
+			String orderid = rs.getString("orderid");
+			String totalprice =rs.getString("totalprice");
+			String address = rs.getString("address");
+			String bookname = rs.getString("bookname");
+			String status = rs.getString("status");
+			Order1 od = new Order1();
+			od.setStatus(status);
+			od.setAddress(address);
+			od.setOrderid(orderid);
+			od.setTotalprice(totalprice);
+			od.setBookname(bookname);
+			order.add(od);
+		}
+		return order;
+	}
+	public void send(String orderid) throws ClassNotFoundException, SQLException{
+		DBCon a=new DBCon();
+		Statement stmt = a.getCon().createStatement();
+		String sql ="update orderlist set status='未收货	'where orderid='"+orderid+"'";
 		stmt.executeUpdate(sql);
 		stmt.close();
 	}

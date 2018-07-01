@@ -76,8 +76,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="iframe_left">
 		<ul>
 		<li><a href="/bookstore/idmanage" target="myframe">账户管理</a></li>
-		<li><a href="ordermanage.jsp" target="myframe">订单管理</a></li>
-		<li><a href="goodsmanage.jsp" target="myframe">商品管理</a></li>
+		<li><a href="/bookstore/ordermanage" target="myframe">订单管理</a></li>
+		<li><a href="/bookstore/goodsmanage" target="myframe">商品管理</a></li>
 		</ul>
 </div>
 <div id="iframe">
