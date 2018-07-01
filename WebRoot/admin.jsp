@@ -6,7 +6,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>My JSP 'admin.jsp' starting page</title>
+    <title>仲有书后台管理</title>
     <style type="text/css">
      #head-left{width: 100%;}
 	#ul{
@@ -66,8 +66,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="ul">
 		<img src="img/cart.gif">
 		<ul>
-			<li><a href="cart.jsp" name="cart">购物车</a></li>
-			<li><a href="personal.jsp">个人中心</a></li>
 			<li><a href="index.jsp" >返回首页</a></li>
 		</ul>
 		</div>
@@ -77,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div id="iframe_left">
 		<ul>
-		<li><a href="idmanage.jsp" target="myframe">账户管理</a></li>
+		<li><a href="/bookstore/idmanage" target="myframe">账户管理</a></li>
 		<li><a href="ordermanage.jsp" target="myframe">订单管理</a></li>
 		<li><a href="goodsmanage.jsp" target="myframe">商品管理</a></li>
 		</ul>

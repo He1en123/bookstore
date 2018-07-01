@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,18 +12,22 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import entry.Users;
+import entry.book;
+import entry.mycart;
+import entry.order;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class addtoorder
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/addtoorder")
+public class addtoorder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public addtoorder() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -33,25 +36,24 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String ID = request.getParameter("ID");
-		String password = request.getParameter("password");
-		Users us = new Users();
-		System.out.println(ID);
+		int bookid=Integer.parseInt(request.getParameter("bookid"));
+		int booknum = Integer.parseInt(request.getParameter("booknum"));
 		HttpSession session = request.getSession();
+		String userid = (String)session.getAttribute("userid");
+		mycart a=new mycart();
 		try {
-			if(us.checkusers(ID, password)==1){
-				session.setAttribute("userid", ID);
-				ResultSet rs = us.usersinfo(ID);
-				while(rs.next()){
-				String role = rs.getString("role");
-				if(role.equals("1")){
-				request.getRequestDispatcher("index.jsp").forward(request, response);
-			}
-				else if(role.equals("0")){
-				request.getRequestDispatcher("admin.jsp").forward(request, response);
-				}
-			}
-			}
+			a.deletemycart(userid, bookid, booknum);
+			order c=new order();
+			book b=new book();
+			Users user=new Users();
+			ResultSet rs=user.usersinfo(userid);
+			int bookprice=b.getbookprice(bookid);
+			int totalprice=bookprice*booknum;
+			String username=rs.getString(2);
+			String address=rs.getString(5);
+			String tel=rs.getString(4);
+			String status="待付款";
+			c.setorderwithoutorderid(userid,username,totalprice,address,tel,status);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

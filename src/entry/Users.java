@@ -55,9 +55,9 @@ public class Users {
 	public ResultSet allusersinfo() throws SQLException, ClassNotFoundException{
 		//返回关于用户信息的结果集	
 		conn =new DBCon().getCon();
-			String sql="select * from users where ";
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
+			String sql="select * from users ";
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
 			return rs;//似乎需要rs.next();
 	}
 	public void updateuser(String userid,String username,String password,String telephone,String address) throws SQLException, ClassNotFoundException{
@@ -79,6 +79,27 @@ public class Users {
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, money);
 		pstmt.setString(2, userid);
+		pstmt.execute();
+	}
+	public void updateuser2(Users1 user) throws SQLException, ClassNotFoundException{
+		//返回关于用户信息的结果集	
+		conn =new DBCon().getCon();
+		String sql = "UPDATE users SET userid = ?,username = ?,password = ?,tel = ?,address = ?,money = ? WHERE userid = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, user.getUserid());
+		pstmt.setString(2, user.getUsername());
+		pstmt.setString(3, user.getPassword());
+		pstmt.setString(4, user.getTel());
+		pstmt.setString(5, user.getAddress());
+		pstmt.setString(6, user.getMoney());
+		pstmt.setString(7, user.getUserid());
+		pstmt.execute();
+	}
+	public void deleteuser(Users1 user) throws ClassNotFoundException, SQLException{
+		conn = new DBCon().getCon();
+		String sql = "DELETE FROM users WHERE userid = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1,user.getUserid());
 		pstmt.execute();
 	}
 }

@@ -1,30 +1,28 @@
 package Service;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import entry.Users;
+import entry.*;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class deleteuser
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/deleteuser")
+public class deleteuser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public deleteuser() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -33,33 +31,21 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String ID = request.getParameter("ID");
-		String password = request.getParameter("password");
-		Users us = new Users();
-		System.out.println(ID);
-		HttpSession session = request.getSession();
+		String userid = request.getParameter("userid");
+		Users delete = new Users();
+		Users1 us = new Users1();
+		us.setUserid(userid);
 		try {
-			if(us.checkusers(ID, password)==1){
-				session.setAttribute("userid", ID);
-				ResultSet rs = us.usersinfo(ID);
-				while(rs.next()){
-				String role = rs.getString("role");
-				if(role.equals("1")){
-				request.getRequestDispatcher("index.jsp").forward(request, response);
-			}
-				else if(role.equals("0")){
-				request.getRequestDispatcher("admin.jsp").forward(request, response);
-				}
-			}
-			}
+			delete.deleteuser(us);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
 		}
-		
+		request.getRequestDispatcher("idmanage").forward(request, response);
 	}
 
 	/**

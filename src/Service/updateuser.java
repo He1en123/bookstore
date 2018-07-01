@@ -1,30 +1,28 @@
 package Service;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import entry.Users;
+import entry.*;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class updateuser
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/updateuser")
+public class updateuser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public updateuser() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -33,25 +31,22 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String ID = request.getParameter("ID");
-		String password = request.getParameter("password");
+		String userid = request.getParameter("userid");
+		String username = request.getParameter("username");
+		String password = request.getParameter("pw");
+		String address = request.getParameter("address");
+		String telephone = request.getParameter("telephone");
+		String money = request.getParameter("money");
 		Users us = new Users();
-		System.out.println(ID);
-		HttpSession session = request.getSession();
+		Users1 user = new Users1();
+		user.setUserid(userid);
+		user.setUsername(username);
+		user.setPassword(password);
+		user.setAddress(address);
+		user.setTel(telephone);
+		user.setMoney(money);
 		try {
-			if(us.checkusers(ID, password)==1){
-				session.setAttribute("userid", ID);
-				ResultSet rs = us.usersinfo(ID);
-				while(rs.next()){
-				String role = rs.getString("role");
-				if(role.equals("1")){
-				request.getRequestDispatcher("index.jsp").forward(request, response);
-			}
-				else if(role.equals("0")){
-				request.getRequestDispatcher("admin.jsp").forward(request, response);
-				}
-			}
-			}
+			us.updateuser2(user);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -59,7 +54,7 @@ public class Login extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		request.getRequestDispatcher("idmanage").forward(request, response);
 	}
 
 	/**

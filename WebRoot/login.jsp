@@ -57,7 +57,6 @@
 				<div id="ul">
 					<img src="img/cart.gif">
 					<ul>
-					<li><a href="cart.html" name="cart">购物车</a></li>
 					<li><a href="register.jsp">注册</a></li>
 					<li><a href="login.jsp">登录</a></li>
 					<li><a href="index.jsp" >返回首页</a></li>

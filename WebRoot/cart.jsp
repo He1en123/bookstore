@@ -6,7 +6,7 @@
 <html>
   <head>
   <meta charset="UTF-8">
-    <title>ååç®ä»</title>
+    <title>我的购物车</title>
     <style>
    #head-left{width: 100%;}
 	#ul{
@@ -85,7 +85,7 @@
 				 %>
 				<table align="center" width="40%">
 					<tr><td colspan="4" align="center" ><h4 >购物车</h4></td></tr>
-					<tr><td width="20%"><h5>编号</h5></td>
+					<tr><td width="20%"><h5>书籍编号</h5></td>
 						<td width="20%"><h5>书名</h5></td>
 						<td width="20%"><h5>单价</h5></td>
 						<td width="50%"><h5>数量</h5></td>
@@ -96,15 +96,16 @@
 						
 					%>
 					<tr><td width="20%"><%= cart.get(i).getBookid() %></td>
-					<form action="addtoorder.jsp">
+					<form action="/bookstore/addtoorder">
 						<td width="20%"><%= cart.get(i).getBookname() %></td>
 						<td width="20%"><%= cart.get(i).getPrice() %></td>
 						<td width="50%"><%= cart.get(i).getBooknum() %></td>
 						<input type="hidden" name="bookid" value="<%= cart.get(i).getBookid() %>">
 						<input type="hidden" name="bookname" value="<%= cart.get(i).getBookname() %>">
 						<input type="hidden" name="booknum" value="<%= cart.get(i).getBooknum() %>">
-					<%} %>
 						<td><input type="submit" value="购买"></td>
+					<%} %>
+						
 					</tr></form>
 					
 					<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
