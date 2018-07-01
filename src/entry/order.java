@@ -35,11 +35,25 @@ public class order {
 			String username,
 			float totalprice,
 			String address,
-			int tel,
+			String tel,
 			String status) throws ClassNotFoundException, SQLException{
 		conn =new DBCon().getCon();
 		String sql ="insert into orderlist (orderid,userid,username,totalprice,address,tel,status)"
 				+ " VALUES ('"+orderid+"','"+userid+"','"+username+"','"+totalprice+"','"+address+"','tel','"+status+"')";
+		Statement stmt = conn.createStatement();
+		stmt.executeUpdate(sql);
+		stmt.close();
+	}
+	public void setorderwithoutorderid(
+			String userid,
+			String username,
+			float totalprice,
+			String address,
+			String tel,
+			String status) throws ClassNotFoundException, SQLException{
+		conn =new DBCon().getCon();
+		String sql ="insert into orderlist (userid,username,totalprice,address,tel,status)"
+				+ " VALUES ('"+userid+"','"+username+"','"+totalprice+"','"+address+"','tel','"+status+"')";
 		Statement stmt = conn.createStatement();
 		stmt.executeUpdate(sql);
 		stmt.close();
