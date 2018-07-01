@@ -1,5 +1,6 @@
 package entry;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -168,5 +169,23 @@ public class book {
 		Statement stmt = a.getCon().createStatement();
 		stmt.execute(sql);
 		stmt.close();
+	}
+	public Book1 getbookbyname(String bookname) throws ClassNotFoundException, SQLException{
+		DBCon a = new DBCon();
+		Book1 bk = new Book1();
+		String sql = "SELECT * FROM book WHERE bookname = ?";
+		PreparedStatement pstmt = a.getCon().prepareStatement(sql);
+		pstmt.setString(1, bookname);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()){
+			bk.setBookid(rs.getInt("bookid"));
+			bk.setBookname(rs.getString("bookname"));
+			bk.setPic(rs.getString("pic"));
+			bk.setPrice(rs.getInt("price"));
+			bk.setType(rs.getString("type"));
+			bk.setStorage(rs.getInt("storage"));
+			bk.setStatus(rs.getString("status"));
+		}
+		return bk;
 	}
 }

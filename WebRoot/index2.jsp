@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.sql.*" import ="entry.book" contentType="text/html; charset=UTF-8" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.sql.*" import ="entry.book"  pageEncoding="utf-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
@@ -94,6 +94,15 @@
 			}
 		</script>
 	</head>
+	<script type="text/javaScript">
+
+		function check(i){
+		}
+		
+		</script>
+	
+	
+	
 	<body>
 		<div  id="head">
 				<a href="index.jsp"><img src="img/zhku.png" style="height: 70px;"/></a>	
@@ -141,26 +150,23 @@
 					</td>
 					<td>
 						输入书名
-						<input type="text" size="20" name="bookname" id="bookname" value="">
-						<a><input type="button" value="搜索" name="serach" onClick="search(bookname.value)"></a>
+						<input type="text" size="20" name="search_name" id="search_name">
+						<input type="button" value="搜索" name="serach" onClick="search(search_name.value)">
 					</td>
 				</tr>				
 			</table>	
 		</div>
 		<div >
 			
-				<% book a=new book();
-						for(int i=1;i<=a.booknum();i++) {
-							if((i-1)%4==0)%>
+				
 					<div id="content" >
-				<form id="<%= i %>" name="<%= i %>"  >
-				<img src="<%= a.getbookpic(i)%>" height="197" width="130" alt="图片1" ><br>
-				书名:<%= a.getbookname(i)%><a><input type="button" value="查看" onClick="book('<%=i %>')"></a>
-				<input type="hidden" name="bookid" value="<%= i%>">
+				<form id="<%= request.getAttribute("bookid") %>" name="<%= request.getAttribute("bookid") %>"  >
+				<img src="<%= request.getAttribute("pic")%>" height="197" width="130" alt="<%=request.getAttribute("bookname") %>" ><br>
+				书名:<%= request.getAttribute("bookname")%><a><input type="button" value="查看" onClick="book('<%=request.getAttribute("bookid") %>')"></a>
+				<input type="hidden" name="bookid" value="<%=request.getAttribute("bookid")%>">
 				
 				</form>
 				</div>
-			<% }%>
 			
 			
 			
