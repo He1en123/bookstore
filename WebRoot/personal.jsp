@@ -59,7 +59,11 @@
 			width:100%; height:80px;
 		}
     </style>
-    
+    <script type="text/javascript">
+    function cart(userid){
+		window.location.href="/bookstore/cart?userid="+userid;
+	}
+    </script>
   </head>
   
 <body>
@@ -68,7 +72,7 @@
 				<div id="ul">
 					<img src="img/cart.gif">
 					<ul>
-					<li><a href="cart.jsp" name="cart">购物车</a></li>
+					<li><a onClick="cart('<%=session.getAttribute("userid")%>')">购物车</a></li>
 					<li><a href="/bookstore/Order">我的订单</a></li>
 					
 					<li><a href="index.jsp" >返回首页</a></li>

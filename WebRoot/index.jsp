@@ -83,6 +83,12 @@
 			function remove(userid){
 				window.location.href="/bookstore/Remove?userid="+userid;
 			}
+			function cart(userid){
+				window.location.href="/bookstore/cart?userid="+userid;
+			}
+			function book(i){
+				window.location.href="/bookstore/Brief?i="+i;
+			}
 		</script>
 	</head>
 	<script type="text/javaScript">
@@ -105,10 +111,10 @@
 					{
 						
 					%>
-					<li><a href="cart.jsp" name="cart">购物车</a></li>
+					<li><a onClick="cart('<%=userid%>')">购物车</a></li>
 					<li>欢迎，<%=userid %></li>
-					<li><a name="cart" onClick="remove('<%=userid%>')">退出</a></li>
-					<li><a name="cart" onClick="a('<%=userid %>')">个人信息</a></li>
+					<li><a name="remove" onClick="remove('<%=userid%>')">退出</a></li>
+					<li><a name="imformation" onClick="a('<%=userid %>')">个人信息</a></li>
 					<%}else{ %>
 					<li><a href="register.jsp">注册</a></li>
 					<li><a href="login.jsp">登录</a></li>
@@ -153,9 +159,9 @@
 						for(int i=1;i<=a.booknum();i++) {
 							if((i-1)%4==0)%>
 					<div id="content" >
-				<form id="<%= i %>" name="<%= i %>" action="brief.jsp" onsubmit="return check('<%= i %>' )" >
+				<form id="<%= i %>" name="<%= i %>"  >
 				<img src="<%= a.getbookpic(i)%>" height="197" width="130" alt="图片1" ><br>
-				书名:<%= a.getbookname(i)%><input type="submit" value="查看" >
+				书名:<%= a.getbookname(i)%><a><input type="button" value="查看" onClick="book('<%=i %>')"></a>
 				<input type="hidden" name="bookid" value="<%= i%>">
 				
 				</form>

@@ -21,7 +21,8 @@ window.location.href="cart.jsp";
 		String userid = (String)session.getAttribute("userid");
 		mycart a=new mycart();
 		a.deletemycart(userid, bookid, booknum);
-		order c=new order();book b=new book();
+		order c=new order();
+		book b=new book();
 		Users user=new Users();
 		ResultSet rs=user.usersinfo(userid);
 		int bookprice=b.getbookprice(bookid);
@@ -29,7 +30,7 @@ window.location.href="cart.jsp";
 		String username=rs.getString(2);
 		String address=rs.getString(5);
 		String tel=rs.getString(4);
-		String status="未支付";
+		String status="待付款";
 		c.setorderwithoutorderid(userid,username,totalprice,address,tel,status);
 		
   %>

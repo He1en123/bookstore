@@ -22,8 +22,8 @@ public class Order1 {
 	public String getTotalprice() {
 		return totalprice;
 	}
-	public void setTotalprice(String totalprice) {
-		this.totalprice = totalprice;
+	public void setTotalprice(String totalprice2) {
+		this.totalprice = totalprice2;
 	}
 	public String getAddress() {
 		return address;

@@ -1,4 +1,7 @@
 <%@ page language="java" import="java.sql.*" import ="entry.*"  pageEncoding="utf-8" %>
+<%@ page import="java.util.*" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="entry.Cart1" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -87,26 +90,23 @@
 						<td width="20%"><h5>单价</h5></td>
 						<td width="50%"><h5>数量</h5></td>
 					<tr>
-					<%
-						String userid = (String)session.getAttribute("userid");
-						mycart a=new mycart();
-						book b=new book();
-						ResultSet rs=a.checkmycart(userid);
-					 while(rs.next()){
-					 %>
-					<tr><td width="20%"><%= rs.getInt(2) %></td>
-					<%
-					int bookid=rs.getInt(2);
-					 %><form action="addtoorder.jsp">
-						<td width="20%"><%= b.getbookname(bookid) %></td>
-						<td width="20%"><%= b.getbookprice(bookid) %></td>
-						<td width="50%"><%= rs.getInt(3) %></td>
-						<input type="hidden" name="bookid" value="<%= rs.getInt(2) %>">
-						<input type="hidden" name="bookname" value="<%= b.getbookname(bookid) %>">
-						<input type="hidden" name="booknum" value="<%= rs.getInt(3) %>">
+					<% 
+						ArrayList<Cart1> cart = (ArrayList<Cart1>)request.getAttribute("cart");
+						for(int i=0;i<cart.size();i++){
+						
+					%>
+					<tr><td width="20%"><%= cart.get(i).getBookid() %></td>
+					<form action="addtoorder.jsp">
+						<td width="20%"><%= cart.get(i).getBookname() %></td>
+						<td width="20%"><%= cart.get(i).getPrice() %></td>
+						<td width="50%"><%= cart.get(i).getBooknum() %></td>
+						<input type="hidden" name="bookid" value="<%= cart.get(i).getBookid() %>">
+						<input type="hidden" name="bookname" value="<%= cart.get(i).getBookname() %>">
+						<input type="hidden" name="booknum" value="<%= cart.get(i).getBooknum() %>">
+					<%} %>
 						<td><input type="submit" value="购买"></td>
 					</tr></form>
-					<%} %>
+					
 					<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
 				
 				</table>

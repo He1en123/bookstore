@@ -81,27 +81,27 @@
   </head>
   <script type="text/javaScript">
 
-		function addmycart(){
-			mycart a=new mycart();
-			
-		}
-		
 		</script>
   <body>
-		<% 
-		int bookid=Integer.parseInt(request.getParameter("bookid"));
-		book a=new book();
-		a.getbook(bookid);
-		 %>
 		<div  id="head-left">
 				<a href="index.jsp"><img src="img/zhku.png" style="height: 70px;"/></a>	
 				<div id="ul">
 					<img src="img/cart.gif">
 					<ul>
-					<li><a href="cart.html" name="cart">购物车</a></li>
+					<%String userid= (String)session.getAttribute("userid") ;
+					if(userid!=null)
+					{
+						
+					%>
+					<li><a onClick="cart('<%=userid%>')">购物车</a></li>
+					<li>欢迎，<%=userid %></li>
+					<li><a name="remove" onClick="remove('<%=userid%>')">退出</a></li>
+					<li><a name="imformation" onClick="a('<%=userid %>')">个人信息</a></li>
+					<%}else{ %>
 					<li><a href="register.jsp">注册</a></li>
 					<li><a href="login.jsp">登录</a></li>
-					<li><a href="index.jsp" >返回首页</a></li>
+					<%} %>
+					</ul>
 					</ul>
 				</div>
 					<div id="brow">	
@@ -112,20 +112,20 @@
 
 	
 		<div id="block1">
-		<img  src=<%= a.getbookpic(bookid) %> id="img">
+		<img  src=<%= request.getAttribute("bookpic") %> id="img">
 		</div >	
 		<div id="block2">
 			<p ></p>	
 			<table >
-			<form name=form action="addmycart.jsp" onsubmit="return addmycart()">
-			<tr ><th name="selectbook">书名：</th><td><input type="text" name="bookname" value=<%= a.getbookname(bookid) %>></td>
+			<form name=form action="/bookstore/addmycart" >
+			<tr ><th name="selectbook">书名：</th><td><input type="text" name="bookname" value=<%= request.getAttribute("bookname") %>></td>
 			<td ><input type="button" name="upbookS" value="下架" style="width: 70px; " align="right" ></tr>		
-			<tr ><th name="selectversion">库存：</th><td ><input type="text" name="storage" value=<%= a.getbookstorage(bookid) %>></td></tr>
-			<tr ><th name="prise">价格：</th><td ><input type="text" name="prise" value=<%= a.getbookprice(bookid) %>></td></tr>				
-			<tr ><th name="selectbookbumber">购买数量：</th><td ><input type="text" name="booknumber" value="2"></td>
+			<tr ><th name="selectversion">库存：</th><td ><input type="text" name="storage" value=<%= request.getAttribute("storage") %>></td></tr>
+			<tr ><th name="prise">价格：</th><td ><input type="text" name="prise" value=<%= request.getAttribute("price") %>></td></tr>				
+			<tr ><th name="selectbookbumber">购买数量：</th><td ><input type="text" name="booknumber" value="0"></td>
 				<td><input type="image" src="img/cart.gif"><input type="submit" name="buycart" value="加入购物车" style="width: 90px; "></td>
 			</tr>
-			<input type="hidden" name="bookid" value="<%=  request.getParameter("bookid") %>">
+			<input type="hidden" name="bookid" value="<%=  request.getAttribute("bookid") %>">
 			</form>
 			</table>
 		</div>
