@@ -130,9 +130,9 @@
 		<table bgcolor="#B6B684" width="100%">
 				<tr>	
 				<td>
-						<a href="" name="allbook">全部商品</a>
-						<a href="" name="up">价格升序</a>
-						<a href="" name="down">价格降序</a>
+						<a href="index.jsp" name="allbook">全部商品</a>
+						<a href="indexorderbyup.jsp?type=" name="up">价格升序</a>
+						<a href="indexorderbydown.jsp?type=" name="down">价格降序</a>
 					</td>
 					<td align="center" width="55%">
 							<a href="indexbychinese.jsp" name="Chin">语文类</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -150,9 +150,10 @@
 		<div >
 				<% 
 				String type=(String)request.getParameter("type");
-				String ascordesc=(String)request.getParameter("ascordesc");
+				type=new String(type.getBytes("iso-8859-1"),"utf-8");
 				book a=new book();
-				ResultSet rs=a.selectbookbymoneyandrequest(type, ascordesc);
+				System.out.println(type);
+				ResultSet rs=a.selectbookbypriceup(type);
 				rs.last();
 				int booknum=rs.getRow();
 				rs.beforeFirst();

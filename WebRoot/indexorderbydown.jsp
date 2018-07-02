@@ -92,16 +92,6 @@
 			function search(bookname){
 				window.location.href="/bookstore/search?bookname="+bookname;
 			}
-						function asc(){
-				<%
-				request.setAttribute("ascordesc", "asc");
-				%>
-			}
-			function desc(){
-				<%
-				request.setAttribute("ascordesc", "desc");
-				%>
-			}
 		</script>
 	</head>
 	<body>
@@ -140,9 +130,9 @@
 		<table bgcolor="#B6B684" width="100%">
 				<tr>	
 				<td>
-						<a href="index.jsp" name="allbook">全部商品</a>
-						<a href="indexorderbyup.jsp?type=英语" onclick="asc()"name="up">价格升序</a>
-						<a href="indexorderbydown.jsp?type=英语"onclick="desc()" name="down">价格降序</a>
+						<a href="" name="allbook">全部商品</a>
+						<a href="" name="up">价格升序</a>
+						<a href="" name="down">价格降序</a>
 					</td>
 					<td align="center" width="55%">
 							<a href="indexbychinese.jsp" name="Chin">语文类</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -159,8 +149,11 @@
 		</div>
 		<div >
 				<% 
+				String type=(String)request.getParameter("type");
+				type=new String(type.getBytes("iso-8859-1"),"utf-8");
 				book a=new book();
-				ResultSet rs=a.selectbookbytype("英语");
+				System.out.println(type);
+				ResultSet rs=a.selectbookbypricedown(type);
 				rs.last();
 				int booknum=rs.getRow();
 				rs.beforeFirst();

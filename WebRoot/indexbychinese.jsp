@@ -132,8 +132,8 @@
 				<tr>	
 				<td>
 						<a href="index.jsp" name="allbook">全部商品</a>
-						<a href="indexorderby.jsp?type=语文&ascordesc=asc"    name="up">价格升序</a>
-						<a href="indexorderby.jsp?type=语文&ascordesc=desc"    name="down">价格降序</a>
+						<a href="indexorderbyup.jsp?type=语文&ascordesc=asc"    name="up">价格升序</a>
+						<a href="indexorderbydown.jsp?type=语文&ascordesc=desc"    name="down">价格降序</a>
 					</td>
 					<td align="center" width="55%">
 							<a href="indexbychinese.jsp" name="Chin">语文类</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

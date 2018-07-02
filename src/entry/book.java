@@ -188,9 +188,18 @@ public class book {
 		}
 		return bk;
 	}
-	public ResultSet selectbookbymoneyandrequest(String type,String ascordesc) throws ClassNotFoundException, SQLException{
+	public ResultSet selectbookbypriceup(String type) throws ClassNotFoundException, SQLException{
 		DBCon a = new DBCon();
-		String sql = "SELECT * FROM book WHERE type = ? ORDER BY price asc";
+		String sql = "SELECT * FROM book WHERE type = ? order by price asc";
+		PreparedStatement pstmt = a.getCon().prepareStatement(sql);
+		pstmt.setString(1, type);
+		ResultSet rs = pstmt.executeQuery();
+		rs.next();
+		return rs;
+	}
+	public ResultSet selectbookbypricedown(String type) throws ClassNotFoundException, SQLException{
+		DBCon a = new DBCon();
+		String sql = "SELECT * FROM book WHERE type = ? order by price desc";
 		PreparedStatement pstmt = a.getCon().prepareStatement(sql);
 		pstmt.setString(1, type);
 		ResultSet rs = pstmt.executeQuery();
