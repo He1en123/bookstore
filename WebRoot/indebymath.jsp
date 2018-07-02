@@ -92,16 +92,14 @@
 			function search(bookname){
 				window.location.href="/bookstore/search?bookname="+bookname;
 			}
-			function asc(){
+						function asc(){
 				<%
-				String asc="asc";
-				request.setAttribute("ascordesc", asc);
+				request.setAttribute("ascordesc", "asc");
 				%>
 			}
 			function desc(){
 				<%
-				String desc="desc";
-				request.setAttribute("ascordesc", desc);
+				request.setAttribute("ascordesc", "desc");
 				%>
 			}
 		</script>
@@ -143,17 +141,16 @@
 				<tr>	
 				<td>
 						<a href="index.jsp" name="allbook">全部商品</a>
-						<a href="indexorderby.jsp"    onclick="asc()"name="up">价格升序</a>
-						<a href="indexorderby.jsp"   onclick="desc()" name="down">价格降序</a>
+						<a href="indexorderby.jsp" onclick="asc()"name="up">价格升序</a>
+						<a href="indexorderby.jsp"onclick="desc()" name="down">价格降序</a>
 					</td>
 					<td align="center" width="55%">
-						<a href="indexbychinese.jsp" name="Chin">语文类</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="indexbychinese.jsp" name="Chin">语文类</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="indexbymath.jsp" name="math">数学类</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="indexbyenglish.jsp" name="engl">英语类</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					</td>
 					<td>
 						输入书名
-						
 						<input type="text" size="20" name="bookname" id="bookname" value="">
 						<a><input type="button" value="搜索" name="serach" onClick="search(bookname.value)"></a>
 					</td>
@@ -161,19 +158,24 @@
 			</table>	
 		</div>
 		<div >
-			
-				<% book a=new book();
-						for(int i=1;i<=a.booknum();i++) {
+				<% 
+				book a=new book();
+				ResultSet rs=a.selectbookbytype("数学");
+				rs.last();
+				int booknum=rs.getRow();
+				rs.beforeFirst();
+				rs.next();
+						for(int i=1;i<=booknum;i++) {
 							if((i-1)%4==0)%>
 					<div id="content" >
 				<form id="<%= i %>" name="<%= i %>"  >
-				<img src="<%= a.getbookpic(i)%>" height="197" width="130" alt="图片1" ><br>
-				书名:<%= a.getbookname(i)%><a><input type="button" value="查看" onClick="book('<%=i %>')"></a>
-				<input type="hidden" name="bookid" value="<%= i%>">
+				<img src="<%= rs.getString(5)%>" height="197" width="130" alt="图片1" ><br>
+				书名:<%= rs.getString(2)%><a><input type="button" value="查看" onClick="book('<%=i %>')"></a>
+				<input type="hidden" name="bookid" value="<%= rs.getString(1)%>">
 				
 				</form>
 				</div>
-			<% }%>
+			<%rs.next(); }%>
 			
 			
 			
