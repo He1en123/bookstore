@@ -34,7 +34,7 @@ public class Recharge extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		String money = request.getParameter("money");
+		int money = Integer.parseInt(request.getParameter("money"));
 		String userid = (String) session.getAttribute("userid");
 		Users user = new Users();
 		try {

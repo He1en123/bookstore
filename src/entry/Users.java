@@ -9,7 +9,7 @@ public class Users {
 	String password;
 	int tel;
 	String address;
-	float money;
+	int money;
 	String role;
 	public Connection conn = null;
 	
@@ -73,11 +73,16 @@ public class Users {
 		pstmt.setString(6, userid);
 		pstmt.execute();
 	}
-	public void updatemoney(String money,String userid) throws ClassNotFoundException, SQLException{
+	public void updatemoney(int money,String userid) throws ClassNotFoundException, SQLException{
 		conn = new DBCon().getCon();
-		String sql = "UPDATE users SET money = ? WHERE userid = ?";
+		String sql2="select money from users where userid='"+userid+"'";
+		Statement stmt=conn.createStatement();
+		ResultSet rs=stmt.executeQuery(sql2);
+		int oldmoney=rs.getInt(1);
+		int newmoney=oldmoney+money;
+		String sql = "UPDATE users SET money = '"+newmoney+"' WHERE userid = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, money);
+		pstmt.setInt(1, money);
 		pstmt.setString(2, userid);
 		pstmt.execute();
 	}

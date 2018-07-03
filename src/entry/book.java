@@ -11,7 +11,7 @@ import DAO.DBCon;
 
 public class book {
 	String bookname;
-	float price;
+	int price;
 	String type;
 	String pic;
 	int storage;
@@ -34,7 +34,7 @@ public class book {
 	public void updatebook( //更改图书信息，关键是取得bookid
 			int bookid,
 			String bookname,
-			float price,
+			int price,
 			String type,
 			String pic,
 			int storage,
@@ -205,6 +205,20 @@ public class book {
 		ResultSet rs = pstmt.executeQuery();
 		rs.next();
 		return rs;
+	}
+	public void reducebookstorage(int bookid,int booknum)throws ClassNotFoundException, SQLException{
+		DBCon a = new DBCon();
+		String sql2="select booknum from book where bookid='"+bookid+"'";
+		Statement stmt=a.getCon().createStatement();
+		ResultSet rs=stmt.executeQuery(sql2);
+		int oldbooknum=rs.getInt(1);
+		int newbooknum=oldbooknum-booknum;
+		
+		String sql = "UPDATE book SET booknum = '"+newbooknum+"' WHERE bookid = ?";
+		PreparedStatement pstmt = a.getCon().prepareStatement(sql);
+		pstmt.setInt(1, bookid);
+		pstmt.execute();
+		
 	}
 }
 
