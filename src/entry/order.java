@@ -84,23 +84,11 @@ public class order {
 	
 	public void updateorderbyidandstatus(int orderid,String status)throws ClassNotFoundException, SQLException{
 		//根据当前订单号和订单状态修改订单状态
-		DBCon a=new DBCon();
-		Statement stmt = a.getCon().createStatement();
-		if(status.equals("未付款"))
-			{String sql ="update orderlist set status='已付款' where orderid='"+orderid+"'";
-			stmt.executeUpdate(sql);
-			stmt.close();
-			}
-		else if(status.equals("已付款"))
-		{String sql ="update orderlist set status='已发货	'where orderid='"+orderid+"'";
-		stmt.executeUpdate(sql);
+		conn = new DBCon().getCon();
+		Statement stmt = conn.createStatement();
+		String sql ="update orderlist set status='待发货' where orderid='"+orderid+"'";
+		stmt.execute(sql);
 		stmt.close();
-		}
-		else if(status.equals("已发货"))
-		{String sql ="update orderlist set status='已签收	'where orderid='"+orderid+"'";
-		stmt.executeUpdate(sql);
-		stmt.close();
-		}
 		
 	}
 	public void givemymoneyback(int orderid)throws ClassNotFoundException, SQLException{
@@ -150,7 +138,7 @@ public class order {
 	public void send(String orderid) throws ClassNotFoundException, SQLException{
 		DBCon a=new DBCon();
 		Statement stmt = a.getCon().createStatement();
-		String sql ="update orderlist set status='未收货	'where orderid='"+orderid+"'";
+		String sql ="update orderlist set status='未收货'where orderid='"+orderid+"'";
 		stmt.executeUpdate(sql);
 		stmt.close();
 	}
@@ -161,5 +149,12 @@ public class order {
 		pstmt.setInt(1, bookid);
 		pstmt.setInt(2, booknum);
 		pstmt.execute();
+	}
+	public void receive(String orderid) throws ClassNotFoundException, SQLException{
+		DBCon a=new DBCon();
+		Statement stmt = a.getCon().createStatement();
+		String sql ="update orderlist set status='已签收'where orderid='"+orderid+"'";
+		stmt.executeUpdate(sql);
+		stmt.close();
 	}
 }

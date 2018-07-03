@@ -1,7 +1,6 @@
 package Service;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -9,21 +8,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import entry.Users;
+import entry.order;
 
 /**
- * Servlet implementation class Recharge
+ * Servlet implementation class receive
  */
-@WebServlet("/Recharge")
-public class Recharge extends HttpServlet {
+@WebServlet("/receive")
+public class receive extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Recharge() {
+    public receive() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,13 +31,10 @@ public class Recharge extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		int money = Integer.parseInt(request.getParameter("money"));
-		String userid = (String) session.getAttribute("userid");
-		Users user = new Users();
+		String orderid = request.getParameter("orderid");
+		order od =new order();
 		try {
-			user.udmoney(money, userid);
-			request.getRequestDispatcher("/Personal").forward(request, response);
+			od.receive(orderid);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,6 +42,7 @@ public class Recharge extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		request.getRequestDispatcher("/Order").forward(request, response);
 	}
 
 	/**

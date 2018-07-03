@@ -1,7 +1,6 @@
 package Service;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -12,18 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import entry.Users;
+import entry.order;
 
 /**
- * Servlet implementation class Recharge
+ * Servlet implementation class pay
  */
-@WebServlet("/Recharge")
-public class Recharge extends HttpServlet {
+@WebServlet("/pay")
+public class pay extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Recharge() {
+    public pay() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,12 +34,17 @@ public class Recharge extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		int money = Integer.parseInt(request.getParameter("money"));
 		String userid = (String) session.getAttribute("userid");
+		int price = -Integer.parseInt(request.getParameter("price"));
+		System.out.println(price);
+		int orderid = Integer.parseInt(request.getParameter("orderid"));
+		String status = request.getParameter("status");
 		Users user = new Users();
+		order od = new order();
 		try {
-			user.udmoney(money, userid);
-			request.getRequestDispatcher("/Personal").forward(request, response);
+			user.udmoney(price, userid);
+			od.updateorderbyidandstatus(orderid, status);
+			request.getRequestDispatcher("/Order").forward(request, response);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

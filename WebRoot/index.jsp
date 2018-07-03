@@ -166,6 +166,7 @@
 						for(int i=1;i<=a.booknum();i++) {
 							if((i-1)%4==0)%>
 					<div id="content" >
+					<%if(a.getbookstorage(i)!=0&&a.getbookstatus(i).equals("上架")) {%>
 				<form id="<%= i %>" name="<%= i %>"  >
 				<img src="<%= a.getbookpic(i)%>" height="197" width="130" alt="图片1" ><br>
 				书名:<%= a.getbookname(i)%><a><input type="button" value="查看" onClick="book('<%=i %>')"></a>
@@ -173,7 +174,7 @@
 				
 				</form>
 				</div>
-			<% }%>
+			<%} }%>
 			
 			
 			

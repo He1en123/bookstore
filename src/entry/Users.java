@@ -75,16 +75,25 @@ public class Users {
 	}
 	public void updatemoney(int money,String userid) throws ClassNotFoundException, SQLException{
 		conn = new DBCon().getCon();
-		String sql2="select money from users where userid='"+userid+"'";
-		Statement stmt=conn.createStatement();
-		ResultSet rs=stmt.executeQuery(sql2);
-		int oldmoney=rs.getInt(1);
-		int newmoney=oldmoney+money;
-		String sql = "UPDATE users SET money = '"+newmoney+"' WHERE userid = ?";
+		String sql = "UPDATE users SET money = '"+money+"' WHERE userid = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, money);
 		pstmt.setString(2, userid);
 		pstmt.execute();
+	}
+	
+	public void udmoney(int money,String userid) throws ClassNotFoundException, SQLException{
+		conn = new DBCon().getCon();
+		String sql2="select money from users where userid='"+userid+"'";
+		Statement stmt=conn.createStatement();
+		ResultSet rs=stmt.executeQuery(sql2);
+		while(rs.next()){
+		int oldmoney=rs.getInt(1);
+		int newmoney=oldmoney+money;
+		String sql = "UPDATE users SET money = '"+newmoney+"' WHERE userid = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, userid);
+		pstmt.execute();}
 	}
 	public void updateuser2(Users1 user) throws SQLException, ClassNotFoundException{
 		//返回关于用户信息的结果集	

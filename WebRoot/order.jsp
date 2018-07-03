@@ -81,9 +81,13 @@
                     $("#jall").prop("checked",false);
                 }
             });
-
-
         });
+        function pay(userid,price,status,orderid){
+      	  window.location.href="/bookstore/pay?userid="+userid+'&price='+price+'&status='+status+'&orderid='+orderid;
+        }
+        function receive(orderid){
+        	window.location.href="/bookstore/receive?orderid="+orderid;
+        }
     </script>
   </head>
   <body>
@@ -119,10 +123,11 @@
 							System.out.println(order.get(i).getStatus());
 							if(order.get(i).getStatus().equals("待付款")){
 					%>
-					<tr><td><input type="checkbox"></td><td><%= order.get(i).getOrderid() %></td><td><%= order.get(i).getBookname() %></td><td><%= order.get(i).getTotalprice() %></td><td><%= order.get(i).getAddress() %></td>
+					<tr><td><%= order.get(i).getOrderid() %></td><td><%= order.get(i).getBookname() %></td><td><%= order.get(i).getTotalprice() %></td><td><%= order.get(i).getAddress() %></td>
 						</tr>
+						<tr><td colspan="5"><input type="button" value="支付" style="width: 60px; " align="left" onClick="pay('<%=session.getAttribute("userid") %>','<%=order.get(i).getTotalprice()%>','<%=order.get(i).getStatus() %>','<%=order.get(i).getOrderid()%>')"></td></tr>
 					<%}} %>
-					<tr><td colspan="5"><input type="button" value="支付" style="width: 60px; " align="left"></td></tr>
+					
 				</tbody>
 				</table>
 				<br>	<br>	<br>
@@ -137,9 +142,8 @@
 						System.out.println(order.get(i).getStatus());
 						if(order.get(i).getStatus().equals("待发货")){
 					%>
-					<tr><td><input type="checkbox"></td><td><%= order.get(i).getOrderid() %></td><td><%= order.get(i).getBookname() %></td><td><%= order.get(i).getTotalprice() %></td><td><%= order.get(i).getAddress() %></td>
+					<tr><td><%= order.get(i).getOrderid() %></td><td><%= order.get(i).getBookname() %></td><td><%= order.get(i).getTotalprice() %></td><td><%= order.get(i).getAddress() %></td>
 						</tr>
-					<input type="button" value="提醒发货" style="width: 60px; "></td></tr>
 					<%}} %>
 				</table>
 					<br>	<br>	<br>
@@ -154,9 +158,9 @@
 						System.out.println(order.get(i).getStatus());
 						if(order.get(i).getStatus().equals("未收货")){
 					%>
-					<tr><td><input type="checkbox"></td><td><%= order.get(i).getOrderid() %></td><td><%= order.get(i).getBookname() %></td><td><%= order.get(i).getTotalprice() %></td><td><%= order.get(i).getAddress() %></td>
+					<tr><td><%= order.get(i).getOrderid() %></td><td><%= order.get(i).getBookname() %></td><td><%= order.get(i).getTotalprice() %></td><td><%= order.get(i).getAddress() %></td>
 						</tr>
-					<input type="button" value="去签收" style="width: 60px; "></td></tr>
+						<tr><td><input type="button" value="签收" style="width: 60px; "onClick="receive('<%=order.get(i).getOrderid()%>')"></td></tr>
 					<%}} %>
 				</table>
 					<br>	<br>	<br>
@@ -171,9 +175,8 @@
 						System.out.println(order.get(i).getStatus());
 						if(order.get(i).getStatus().equals("已签收")){
 					%>
-					<tr><td><input type="checkbox"></td><td><%= order.get(i).getOrderid() %></td><td><%= order.get(i).getBookname() %></td><td><%= order.get(i).getTotalprice() %></td><td><%= order.get(i).getAddress() %></td>
+					<tr><td><%= order.get(i).getOrderid() %></td><td><%= order.get(i).getBookname() %></td><td><%= order.get(i).getTotalprice() %></td><td><%= order.get(i).getAddress() %></td>
 						</tr>
-					<input type="button" value="去评价" style="width: 60px; "></td></tr>
 					<%}} %>
 				</table>
 		</div>
