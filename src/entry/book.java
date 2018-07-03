@@ -16,17 +16,17 @@ public class book {
 	String pic;
 	int storage;
 	String status;
+	int bookid;
 	public void setbook(
+			int bookid,
 			String bookname,
-			float price,
+			int price,
 			String type,
-			String pic,
-			int storage,
-			String status,
-			String detail) throws ClassNotFoundException, SQLException{
+			String pic
+			) throws ClassNotFoundException, SQLException{
 		DBCon a=new DBCon();
-		String sql ="insert into book (bookname,price,type,pic,storage,status,detail)"
-				+ " VALUES ('"+bookname+"','"+price+"','"+type+"','"+pic+"','"+storage+"','已上架','"+detail+"')";
+		String sql ="insert into book (bookid,bookname,price,type,pic,status)"
+				+ " VALUES ('"+bookid+"','"+bookname+"','"+price+"','"+type+"','"+pic+"','上架')";
 		Statement stmt = a.getCon().createStatement();
 		stmt.executeUpdate(sql);
 		stmt.close();

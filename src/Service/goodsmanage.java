@@ -39,6 +39,7 @@ public class goodsmanage extends HttpServlet {
 		List<Book1> books = new ArrayList<Book1>();
 		try {
 			books = book.getallbook();
+			System.out.println(books.size());
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

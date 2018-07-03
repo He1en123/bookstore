@@ -66,8 +66,8 @@
 				<div id="ul">
 					<img src="img/personal.gif" style="height: 20px; width: 20px; ">
 					<ul>
-					<li><a href="personal.jsp" name="cart">个人中心</a></li>
-					<li><a href="order.html">我的订单</a></li>
+					<li><a href="/bookstore/Personal" name="cart">个人中心</a></li>
+					<li><a href="/bookstore/Order">我的订单</a></li>
 					
 					<li><a href="index.jsp" >返回主页</a></li>
 					</ul>

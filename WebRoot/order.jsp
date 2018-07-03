@@ -92,7 +92,7 @@
 				<div id="ul">
 					<img src="img/cart.gif">
 					<ul>
-					<li><a href="cart.jsp" name="cart">购物车</a></li>
+					<li><a href="/bookstore/cart" name="cart">购物车</a></li>
 					<li><a href="personal.jsp">个人中心</a></li>
 				
 					<li><a href="index.jsp" >返回首页</a></li>

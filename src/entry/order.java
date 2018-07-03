@@ -57,7 +57,7 @@ public class order {
 		String sql ="insert into orderlist (userid,username,totalprice,address,tel,status)"
 				+ " VALUES ('"+userid+"','"+username+"','"+totalprice+"','"+address+"','tel','"+status+"')";
 		Statement stmt = conn.createStatement();
-		stmt.executeUpdate(sql);
+		stmt.execute(sql);
 		stmt.close();
 	}
 	public ResultSet getorderbyuserid(String userid) throws ClassNotFoundException, SQLException{ 

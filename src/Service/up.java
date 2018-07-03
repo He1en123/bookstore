@@ -1,7 +1,6 @@
 package Service;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -9,24 +8,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import entry.Users;
 import entry.book;
-import entry.mycart;
-import entry.order;
 
 /**
- * Servlet implementation class addtoorder
+ * Servlet implementation class up
  */
-@WebServlet("/addtoorder")
-public class addtoorder extends HttpServlet {
+@WebServlet("/up")
+public class up extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public addtoorder() {
+    public up() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,26 +31,17 @@ public class addtoorder extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int bookid=Integer.parseInt(request.getParameter("bookid"));
-		int booknum = Integer.parseInt(request.getParameter("booknum"));
-		HttpSession session = request.getSession();
-		String userid = (String)session.getAttribute("userid");
-		mycart a=new mycart();
+		int bookid = Integer.parseInt(request.getParameter("bookid"));
+		String bookname = request.getParameter("bookname");
+		String bookname1 = new String(bookname.getBytes("iso-8859-1"),"UTF-8");
+		int price = Integer.parseInt(request.getParameter("price"));
+		String type = request.getParameter("type");
+		String type1 = new String(type.getBytes("iso-8859-1"),"UTF-8");
+		String pic = request.getParameter("pic");
+		book bk = new book();
 		try {
-			a.deletemycart(userid, bookid, booknum);
-			order c=new order();
-			book b=new book();
-			Users user=new Users();
-			ResultSet rs=user.usersinfo(userid);
-			while(rs.next()){
-			int bookprice=b.getbookprice(bookid);
-			float totalprice=bookprice*booknum;
-			String username=rs.getString(2);
-			String address=rs.getString(5);
-			String tel=rs.getString(4);
-			String status="待付款";
-			c.setorderwithoutorderid(userid,username,totalprice,address,tel,status);
-			}
+			bk.setbook(bookid, bookname1, price, type1, pic);
+			request.getRequestDispatcher("/goodsmanage").forward(request, response);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,8 +49,6 @@ public class addtoorder extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher("/cart").forward(request, response);
-		
 	}
 
 	/**
