@@ -115,9 +115,6 @@
 					<tbody id="jtd">
 					<%  
 						ArrayList<Order1> order = (ArrayList<Order1>)request.getAttribute("orderlist");
-						System.out.println(order);
-						System.out.println(order.get(1).getStatus());
-						System.out.println(order.size());
 						for(int i=0;i<order.size();i++){
 							System.out.println(order.get(i).getStatus());
 							if(order.get(i).getStatus().equals("待付款")){

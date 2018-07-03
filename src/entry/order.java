@@ -154,4 +154,12 @@ public class order {
 		stmt.executeUpdate(sql);
 		stmt.close();
 	}
+	public void settoorderbook(int bookid,int booknum) throws ClassNotFoundException, SQLException{
+		DBCon a=new DBCon();
+		String sql ="insert into orderbook (bookid,booknum) values (?,?)";
+		PreparedStatement pstmt = a.getCon().prepareStatement(sql);
+		pstmt.setInt(1, bookid);
+		pstmt.setInt(2, booknum);
+		pstmt.execute();
+	}
 }

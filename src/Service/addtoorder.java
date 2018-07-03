@@ -42,6 +42,7 @@ public class addtoorder extends HttpServlet {
 		String userid = (String)session.getAttribute("userid");
 		mycart a=new mycart();
 		try {
+			System.out.println(bookid);
 			a.deletemycart(userid, bookid, booknum);
 			order c=new order();
 			book b=new book();
@@ -54,6 +55,7 @@ public class addtoorder extends HttpServlet {
 			String address=rs.getString(5);
 			String tel=rs.getString(4);
 			String status="待付款";
+			c.settoorderbook(bookid, booknum);
 			c.setorderwithoutorderid(userid,username,totalprice,address,tel,status);
 			}
 		} catch (ClassNotFoundException e) {
